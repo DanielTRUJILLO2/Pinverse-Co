@@ -26,6 +26,10 @@
       font-family:"Segoe UI", Arial, sans-serif;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       background:
         linear-gradient(rgba(246,243,238,.95), rgba(246,243,238,.97)),
@@ -136,6 +140,7 @@
       flex-shrink:0;
       align-items:center;
       justify-content:center;
+      user-select:none;
     }
 
     .main-nav{
@@ -153,6 +158,7 @@
       font-weight:800;
       letter-spacing:.3px;
       padding:8px 0;
+      transition:.2s ease;
     }
 
     .main-nav a:hover{
@@ -174,6 +180,13 @@
       background:#fff;
       font-size:14px;
       outline:none;
+      transition:.2s ease;
+    }
+
+    .toolbar input:focus,
+    .toolbar select:focus{
+      border-color:rgba(47,120,189,.45);
+      box-shadow:0 0 0 4px rgba(47,120,189,.08);
     }
 
     .banner{
@@ -205,7 +218,7 @@
       justify-content:space-between;
       gap:12px;
       flex-wrap:wrap;
-      margin:22px 0 16px;
+      margin:22px 0 10px;
     }
 
     .section-head h3{
@@ -275,6 +288,7 @@
       height:100%;
       object-fit:cover;
       display:block;
+      background:#eee;
     }
 
     .image-placeholder{
@@ -385,6 +399,34 @@
 
     .btn-outline:hover{
       background:#fff;
+    }
+
+    .load-more-wrap{
+      display:flex;
+      justify-content:center;
+      margin-top:18px;
+    }
+
+    .load-more-btn{
+      border:none;
+      background:linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+      color:#fff;
+      padding:14px 22px;
+      border-radius:14px;
+      font-size:14px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      transition:.2s ease;
+    }
+
+    .load-more-btn:hover{
+      transform:translateY(-2px);
+      opacity:.96;
+    }
+
+    .load-more-btn.hidden{
+      display:none;
     }
 
     footer{
@@ -616,6 +658,10 @@
 
     <section class="products-grid" id="productGrid"></section>
 
+    <div class="load-more-wrap">
+      <button id="loadMoreBtn" class="load-more-btn">Ver más pines</button>
+    </div>
+
     <footer>
       © 2026 Pinverse · Pines coleccionables con pedidos directos por WhatsApp
     </footer>
@@ -626,6 +672,7 @@
     const sortSelect = document.getElementById('sortSelect');
     const productGrid = document.getElementById('productGrid');
     const productCount = document.getElementById('productCount');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
 
     const whatsappNumber = '573116821619';
 
@@ -634,7 +681,6 @@
       { id: 2, foto: 'imagenes/pin2.jpeg', nombre: 'Pin Gatos Mágicos', referencia: '002', precio: 8000, descripcion: 'Gatitos curiosos en un mundo encantado.', estado: 'disponible' },
       { id: 3, foto: 'imagenes/pin3.jpeg', nombre: 'Pin Totoro Clásico', referencia: '003', precio: 8000, descripcion: 'Espíritu del bosque en versión minimalista.', estado: 'disponible' },
       { id: 4, foto: 'imagenes/pin4.jpeg', nombre: 'Pin Totoro Floral', referencia: '004', precio: 8000, descripcion: 'Totoro rodeado de un delicado arreglo floral.', estado: 'disponible' },
-
       { id: 5, foto: 'imagenes/pin5.jpeg', nombre: 'Pin 5', referencia: '005', precio: 8000, descripcion: 'Descripción del pin 5.', estado: 'disponible' },
       { id: 6, foto: 'imagenes/pin6.jpeg', nombre: 'Pin 6', referencia: '006', precio: 8000, descripcion: 'Descripción del pin 6.', estado: 'disponible' },
       { id: 7, foto: 'imagenes/pin7.jpeg', nombre: 'Pin 7', referencia: '007', precio: 8000, descripcion: 'Descripción del pin 7.', estado: 'disponible' },
@@ -719,28 +765,33 @@
       { id: 86, foto: 'imagenes/pin86.jpeg', nombre: 'Pin 86', referencia: '086', precio: 8000, descripcion: 'Descripción del pin 86.', estado: 'disponible' }
     ];
 
+    const INITIAL_VISIBLE = 12;
+    const LOAD_MORE_STEP = 12;
+    let visibleCount = INITIAL_VISIBLE;
+    let filteredProducts = [...productos];
+
     function formatoCOP(valor) {
       return '$' + valor.toLocaleString('es-CO') + ' COP';
     }
 
     function crearImagen(producto) {
-    return `
-      <img
-        src="${producto.foto}"
-        alt="${producto.nombre} ${producto.referencia}"
-        loading="lazy"
-        decoding="async"
-        width="400"
-        height="400"
-        onerror="this.outerHTML=\`
-          <div class='image-placeholder'>
-            <div class='icon'>📌</div>
-            <p>Aquí irá la imagen de tu pin</p>
-          </div>
-        \`"
-      />
-    `;
-  }
+      return `
+        <img
+          src="${producto.foto}"
+          alt="${producto.nombre} ${producto.referencia}"
+          loading="lazy"
+          decoding="async"
+          width="400"
+          height="400"
+          onerror="this.outerHTML=\`
+            <div class='image-placeholder'>
+              <div class='icon'>📌</div>
+              <p>Aquí irá la imagen de tu pin</p>
+            </div>
+          \`"
+        />
+      `;
+    }
 
     function crearTarjeta(producto) {
       const disponible = producto.estado === 'disponible';
@@ -778,12 +829,23 @@
       `;
     }
 
-    function renderProductos(lista) {
-      productGrid.innerHTML = lista.map(crearTarjeta).join('');
-      productCount.textContent = lista.length;
+    function actualizarBotonVerMas() {
+      if (visibleCount >= filteredProducts.length) {
+        loadMoreBtn.classList.add('hidden');
+      } else {
+        loadMoreBtn.classList.remove('hidden');
+      }
     }
 
-    function aplicarFiltros() {
+    function renderProductos(lista) {
+      filteredProducts = lista;
+      const visibles = filteredProducts.slice(0, visibleCount);
+      productGrid.innerHTML = visibles.map(crearTarjeta).join('');
+      productCount.textContent = filteredProducts.length;
+      actualizarBotonVerMas();
+    }
+
+    function aplicarFiltros(resetVisible = true) {
       const termino = searchInput.value.toLowerCase().trim();
       const orden = sortSelect.value;
 
@@ -799,13 +861,22 @@
         filtrados.sort((a, b) => b.precio - a.precio);
       }
 
+      if (resetVisible) {
+        visibleCount = INITIAL_VISIBLE;
+      }
+
       renderProductos(filtrados);
     }
 
-    searchInput.addEventListener('input', aplicarFiltros);
-    sortSelect.addEventListener('change', aplicarFiltros);
+    loadMoreBtn.addEventListener('click', () => {
+      visibleCount += LOAD_MORE_STEP;
+      renderProductos(filteredProducts);
+    });
 
-    renderProductos(productos);
+    searchInput.addEventListener('input', () => aplicarFiltros(true));
+    sortSelect.addEventListener('change', () => aplicarFiltros(true));
+
+    aplicarFiltros(true);
   </script>
 </body>
 </html>
