@@ -134,6 +134,8 @@
       font-size:24px;
       cursor:pointer;
       flex-shrink:0;
+      align-items:center;
+      justify-content:center;
     }
 
     .main-nav{
@@ -518,8 +520,6 @@
     @media (max-width: 640px){
       .menu-btn{
         display:flex;
-        align-items:center;
-        justify-content:center;
       }
 
       .nav-bottom{
@@ -633,7 +633,8 @@
       { id: 1, foto: 'imagenes/pin1.jpeg', nombre: 'Pin Chef Ratatouille', referencia: '001', precio: 8000, descripcion: 'Ratoncito chef con estilo culinario.', estado: 'disponible' },
       { id: 2, foto: 'imagenes/pin2.jpeg', nombre: 'Pin Gatos Mágicos', referencia: '002', precio: 8000, descripcion: 'Gatitos curiosos en un mundo encantado.', estado: 'disponible' },
       { id: 3, foto: 'imagenes/pin3.jpeg', nombre: 'Pin Totoro Clásico', referencia: '003', precio: 8000, descripcion: 'Espíritu del bosque en versión minimalista.', estado: 'disponible' },
-      { id: 4, foto: 'imagenes/pin4.jpeg', nombre: 'Pin Totoro Floral', referencia: '004', precio: 8000, descripcion: 'Totoro rodeado de un delicado arreglo floral.  ', estado: 'disponible' },
+      { id: 4, foto: 'imagenes/pin4.jpeg', nombre: 'Pin Totoro Floral', referencia: '004', precio: 8000, descripcion: 'Totoro rodeado de un delicado arreglo floral.', estado: 'disponible' },
+
       { id: 5, foto: 'imagenes/pin5.jpeg', nombre: 'Pin 5', referencia: '005', precio: 8000, descripcion: 'Descripción del pin 5.', estado: 'disponible' },
       { id: 6, foto: 'imagenes/pin6.jpeg', nombre: 'Pin 6', referencia: '006', precio: 8000, descripcion: 'Descripción del pin 6.', estado: 'disponible' },
       { id: 7, foto: 'imagenes/pin7.jpeg', nombre: 'Pin 7', referencia: '007', precio: 8000, descripcion: 'Descripción del pin 7.', estado: 'disponible' },
@@ -641,7 +642,81 @@
       { id: 9, foto: 'imagenes/pin9.jpeg', nombre: 'Pin 9', referencia: '009', precio: 8000, descripcion: 'Descripción del pin 9.', estado: 'disponible' },
       { id: 10, foto: 'imagenes/pin10.jpeg', nombre: 'Pin 10', referencia: '010', precio: 8000, descripcion: 'Descripción del pin 10.', estado: 'disponible' },
       { id: 11, foto: 'imagenes/pin11.jpeg', nombre: 'Pin 11', referencia: '011', precio: 8000, descripcion: 'Descripción del pin 11.', estado: 'disponible' },
-      { id: 12, foto: 'imagenes/pin12.jpeg', nombre: 'Pin 12', referencia: '012', precio: 8000, descripcion: 'Descripción del pin 12.', estado: 'disponible' }
+      { id: 12, foto: 'imagenes/pin12.jpeg', nombre: 'Pin 12', referencia: '012', precio: 8000, descripcion: 'Descripción del pin 12.', estado: 'disponible' },
+      { id: 13, foto: 'imagenes/pin13.jpeg', nombre: 'Pin 13', referencia: '013', precio: 8000, descripcion: 'Descripción del pin 13.', estado: 'disponible' },
+      { id: 14, foto: 'imagenes/pin14.jpeg', nombre: 'Pin 14', referencia: '014', precio: 8000, descripcion: 'Descripción del pin 14.', estado: 'disponible' },
+      { id: 15, foto: 'imagenes/pin15.jpeg', nombre: 'Pin 15', referencia: '015', precio: 8000, descripcion: 'Descripción del pin 15.', estado: 'disponible' },
+      { id: 16, foto: 'imagenes/pin16.jpeg', nombre: 'Pin 16', referencia: '016', precio: 8000, descripcion: 'Descripción del pin 16.', estado: 'disponible' },
+      { id: 17, foto: 'imagenes/pin17.jpeg', nombre: 'Pin 17', referencia: '017', precio: 8000, descripcion: 'Descripción del pin 17.', estado: 'disponible' },
+      { id: 18, foto: 'imagenes/pin18.jpeg', nombre: 'Pin 18', referencia: '018', precio: 8000, descripcion: 'Descripción del pin 18.', estado: 'disponible' },
+      { id: 19, foto: 'imagenes/pin19.jpeg', nombre: 'Pin 19', referencia: '019', precio: 8000, descripcion: 'Descripción del pin 19.', estado: 'disponible' },
+      { id: 20, foto: 'imagenes/pin20.jpeg', nombre: 'Pin 20', referencia: '020', precio: 8000, descripcion: 'Descripción del pin 20.', estado: 'disponible' },
+      { id: 21, foto: 'imagenes/pin21.jpeg', nombre: 'Pin 21', referencia: '021', precio: 8000, descripcion: 'Descripción del pin 21.', estado: 'disponible' },
+      { id: 22, foto: 'imagenes/pin22.jpeg', nombre: 'Pin 22', referencia: '022', precio: 8000, descripcion: 'Descripción del pin 22.', estado: 'disponible' },
+      { id: 23, foto: 'imagenes/pin23.jpeg', nombre: 'Pin 23', referencia: '023', precio: 8000, descripcion: 'Descripción del pin 23.', estado: 'disponible' },
+      { id: 24, foto: 'imagenes/pin24.jpeg', nombre: 'Pin 24', referencia: '024', precio: 8000, descripcion: 'Descripción del pin 24.', estado: 'disponible' },
+      { id: 25, foto: 'imagenes/pin25.jpeg', nombre: 'Pin 25', referencia: '025', precio: 8000, descripcion: 'Descripción del pin 25.', estado: 'disponible' },
+      { id: 26, foto: 'imagenes/pin26.jpeg', nombre: 'Pin 26', referencia: '026', precio: 8000, descripcion: 'Descripción del pin 26.', estado: 'disponible' },
+      { id: 27, foto: 'imagenes/pin27.jpeg', nombre: 'Pin 27', referencia: '027', precio: 8000, descripcion: 'Descripción del pin 27.', estado: 'disponible' },
+      { id: 28, foto: 'imagenes/pin28.jpeg', nombre: 'Pin 28', referencia: '028', precio: 8000, descripcion: 'Descripción del pin 28.', estado: 'disponible' },
+      { id: 29, foto: 'imagenes/pin29.jpeg', nombre: 'Pin 29', referencia: '029', precio: 8000, descripcion: 'Descripción del pin 29.', estado: 'disponible' },
+      { id: 30, foto: 'imagenes/pin30.jpeg', nombre: 'Pin 30', referencia: '030', precio: 8000, descripcion: 'Descripción del pin 30.', estado: 'disponible' },
+      { id: 31, foto: 'imagenes/pin31.jpeg', nombre: 'Pin 31', referencia: '031', precio: 8000, descripcion: 'Descripción del pin 31.', estado: 'disponible' },
+      { id: 32, foto: 'imagenes/pin32.jpeg', nombre: 'Pin 32', referencia: '032', precio: 8000, descripcion: 'Descripción del pin 32.', estado: 'disponible' },
+      { id: 33, foto: 'imagenes/pin33.jpeg', nombre: 'Pin 33', referencia: '033', precio: 8000, descripcion: 'Descripción del pin 33.', estado: 'disponible' },
+      { id: 34, foto: 'imagenes/pin34.jpeg', nombre: 'Pin 34', referencia: '034', precio: 8000, descripcion: 'Descripción del pin 34.', estado: 'disponible' },
+      { id: 35, foto: 'imagenes/pin35.jpeg', nombre: 'Pin 35', referencia: '035', precio: 8000, descripcion: 'Descripción del pin 35.', estado: 'disponible' },
+      { id: 36, foto: 'imagenes/pin36.jpeg', nombre: 'Pin 36', referencia: '036', precio: 8000, descripcion: 'Descripción del pin 36.', estado: 'disponible' },
+      { id: 37, foto: 'imagenes/pin37.jpeg', nombre: 'Pin 37', referencia: '037', precio: 8000, descripcion: 'Descripción del pin 37.', estado: 'disponible' },
+      { id: 38, foto: 'imagenes/pin38.jpeg', nombre: 'Pin 38', referencia: '038', precio: 8000, descripcion: 'Descripción del pin 38.', estado: 'disponible' },
+      { id: 39, foto: 'imagenes/pin39.jpeg', nombre: 'Pin 39', referencia: '039', precio: 8000, descripcion: 'Descripción del pin 39.', estado: 'disponible' },
+      { id: 40, foto: 'imagenes/pin40.jpeg', nombre: 'Pin 40', referencia: '040', precio: 8000, descripcion: 'Descripción del pin 40.', estado: 'disponible' },
+      { id: 41, foto: 'imagenes/pin41.jpeg', nombre: 'Pin 41', referencia: '041', precio: 8000, descripcion: 'Descripción del pin 41.', estado: 'disponible' },
+      { id: 42, foto: 'imagenes/pin42.jpeg', nombre: 'Pin 42', referencia: '042', precio: 8000, descripcion: 'Descripción del pin 42.', estado: 'disponible' },
+      { id: 43, foto: 'imagenes/pin43.jpeg', nombre: 'Pin 43', referencia: '043', precio: 8000, descripcion: 'Descripción del pin 43.', estado: 'disponible' },
+      { id: 44, foto: 'imagenes/pin44.jpeg', nombre: 'Pin 44', referencia: '044', precio: 8000, descripcion: 'Descripción del pin 44.', estado: 'disponible' },
+      { id: 45, foto: 'imagenes/pin45.jpeg', nombre: 'Pin 45', referencia: '045', precio: 8000, descripcion: 'Descripción del pin 45.', estado: 'disponible' },
+      { id: 46, foto: 'imagenes/pin46.jpeg', nombre: 'Pin 46', referencia: '046', precio: 8000, descripcion: 'Descripción del pin 46.', estado: 'disponible' },
+      { id: 47, foto: 'imagenes/pin47.jpeg', nombre: 'Pin 47', referencia: '047', precio: 8000, descripcion: 'Descripción del pin 47.', estado: 'disponible' },
+      { id: 48, foto: 'imagenes/pin48.jpeg', nombre: 'Pin 48', referencia: '048', precio: 8000, descripcion: 'Descripción del pin 48.', estado: 'disponible' },
+      { id: 49, foto: 'imagenes/pin49.jpeg', nombre: 'Pin 49', referencia: '049', precio: 8000, descripcion: 'Descripción del pin 49.', estado: 'disponible' },
+      { id: 50, foto: 'imagenes/pin50.jpeg', nombre: 'Pin 50', referencia: '050', precio: 8000, descripcion: 'Descripción del pin 50.', estado: 'disponible' },
+      { id: 51, foto: 'imagenes/pin51.jpeg', nombre: 'Pin 51', referencia: '051', precio: 8000, descripcion: 'Descripción del pin 51.', estado: 'disponible' },
+      { id: 52, foto: 'imagenes/pin52.jpeg', nombre: 'Pin 52', referencia: '052', precio: 8000, descripcion: 'Descripción del pin 52.', estado: 'disponible' },
+      { id: 53, foto: 'imagenes/pin53.jpeg', nombre: 'Pin 53', referencia: '053', precio: 8000, descripcion: 'Descripción del pin 53.', estado: 'disponible' },
+      { id: 54, foto: 'imagenes/pin54.jpeg', nombre: 'Pin 54', referencia: '054', precio: 8000, descripcion: 'Descripción del pin 54.', estado: 'disponible' },
+      { id: 55, foto: 'imagenes/pin55.jpeg', nombre: 'Pin 55', referencia: '055', precio: 8000, descripcion: 'Descripción del pin 55.', estado: 'disponible' },
+      { id: 56, foto: 'imagenes/pin56.jpeg', nombre: 'Pin 56', referencia: '056', precio: 8000, descripcion: 'Descripción del pin 56.', estado: 'disponible' },
+      { id: 57, foto: 'imagenes/pin57.jpeg', nombre: 'Pin 57', referencia: '057', precio: 8000, descripcion: 'Descripción del pin 57.', estado: 'disponible' },
+      { id: 58, foto: 'imagenes/pin58.jpeg', nombre: 'Pin 58', referencia: '058', precio: 8000, descripcion: 'Descripción del pin 58.', estado: 'disponible' },
+      { id: 59, foto: 'imagenes/pin59.jpeg', nombre: 'Pin 59', referencia: '059', precio: 8000, descripcion: 'Descripción del pin 59.', estado: 'disponible' },
+      { id: 60, foto: 'imagenes/pin60.jpeg', nombre: 'Pin 60', referencia: '060', precio: 8000, descripcion: 'Descripción del pin 60.', estado: 'disponible' },
+      { id: 61, foto: 'imagenes/pin61.jpeg', nombre: 'Pin 61', referencia: '061', precio: 8000, descripcion: 'Descripción del pin 61.', estado: 'disponible' },
+      { id: 62, foto: 'imagenes/pin62.jpeg', nombre: 'Pin 62', referencia: '062', precio: 8000, descripcion: 'Descripción del pin 62.', estado: 'disponible' },
+      { id: 63, foto: 'imagenes/pin63.jpeg', nombre: 'Pin 63', referencia: '063', precio: 8000, descripcion: 'Descripción del pin 63.', estado: 'disponible' },
+      { id: 64, foto: 'imagenes/pin64.jpeg', nombre: 'Pin 64', referencia: '064', precio: 8000, descripcion: 'Descripción del pin 64.', estado: 'disponible' },
+      { id: 65, foto: 'imagenes/pin65.jpeg', nombre: 'Pin 65', referencia: '065', precio: 8000, descripcion: 'Descripción del pin 65.', estado: 'disponible' },
+      { id: 66, foto: 'imagenes/pin66.jpeg', nombre: 'Pin 66', referencia: '066', precio: 8000, descripcion: 'Descripción del pin 66.', estado: 'disponible' },
+      { id: 67, foto: 'imagenes/pin67.jpeg', nombre: 'Pin 67', referencia: '067', precio: 8000, descripcion: 'Descripción del pin 67.', estado: 'disponible' },
+      { id: 68, foto: 'imagenes/pin68.jpeg', nombre: 'Pin 68', referencia: '068', precio: 8000, descripcion: 'Descripción del pin 68.', estado: 'disponible' },
+      { id: 69, foto: 'imagenes/pin69.jpeg', nombre: 'Pin 69', referencia: '069', precio: 8000, descripcion: 'Descripción del pin 69.', estado: 'disponible' },
+      { id: 70, foto: 'imagenes/pin70.jpeg', nombre: 'Pin 70', referencia: '070', precio: 8000, descripcion: 'Descripción del pin 70.', estado: 'disponible' },
+      { id: 71, foto: 'imagenes/pin71.jpeg', nombre: 'Pin 71', referencia: '071', precio: 8000, descripcion: 'Descripción del pin 71.', estado: 'disponible' },
+      { id: 72, foto: 'imagenes/pin72.jpeg', nombre: 'Pin 72', referencia: '072', precio: 8000, descripcion: 'Descripción del pin 72.', estado: 'disponible' },
+      { id: 73, foto: 'imagenes/pin73.jpeg', nombre: 'Pin 73', referencia: '073', precio: 8000, descripcion: 'Descripción del pin 73.', estado: 'disponible' },
+      { id: 74, foto: 'imagenes/pin74.jpeg', nombre: 'Pin 74', referencia: '074', precio: 8000, descripcion: 'Descripción del pin 74.', estado: 'disponible' },
+      { id: 75, foto: 'imagenes/pin75.jpeg', nombre: 'Pin 75', referencia: '075', precio: 8000, descripcion: 'Descripción del pin 75.', estado: 'disponible' },
+      { id: 76, foto: 'imagenes/pin76.jpeg', nombre: 'Pin 76', referencia: '076', precio: 8000, descripcion: 'Descripción del pin 76.', estado: 'disponible' },
+      { id: 77, foto: 'imagenes/pin77.jpeg', nombre: 'Pin 77', referencia: '077', precio: 8000, descripcion: 'Descripción del pin 77.', estado: 'disponible' },
+      { id: 78, foto: 'imagenes/pin78.jpeg', nombre: 'Pin 78', referencia: '078', precio: 8000, descripcion: 'Descripción del pin 78.', estado: 'disponible' },
+      { id: 79, foto: 'imagenes/pin79.jpeg', nombre: 'Pin 79', referencia: '079', precio: 8000, descripcion: 'Descripción del pin 79.', estado: 'disponible' },
+      { id: 80, foto: 'imagenes/pin80.jpeg', nombre: 'Pin 80', referencia: '080', precio: 8000, descripcion: 'Descripción del pin 80.', estado: 'disponible' },
+      { id: 81, foto: 'imagenes/pin81.jpeg', nombre: 'Pin 81', referencia: '081', precio: 8000, descripcion: 'Descripción del pin 81.', estado: 'disponible' },
+      { id: 82, foto: 'imagenes/pin82.jpeg', nombre: 'Pin 82', referencia: '082', precio: 8000, descripcion: 'Descripción del pin 82.', estado: 'disponible' },
+      { id: 83, foto: 'imagenes/pin83.jpeg', nombre: 'Pin 83', referencia: '083', precio: 8000, descripcion: 'Descripción del pin 83.', estado: 'disponible' },
+      { id: 84, foto: 'imagenes/pin84.jpeg', nombre: 'Pin 84', referencia: '084', precio: 8000, descripcion: 'Descripción del pin 84.', estado: 'disponible' },
+      { id: 85, foto: 'imagenes/pin85.jpeg', nombre: 'Pin 85', referencia: '085', precio: 8000, descripcion: 'Descripción del pin 85.', estado: 'disponible' },
+      { id: 86, foto: 'imagenes/pin86.jpeg', nombre: 'Pin 86', referencia: '086', precio: 8000, descripcion: 'Descripción del pin 86.', estado: 'disponible' }
     ];
 
     function formatoCOP(valor) {
