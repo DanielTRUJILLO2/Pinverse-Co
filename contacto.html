@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pinverse - Contacto</title>
+  <style>
+    :root{
+      --azul:#2f78bd;
+      --verde:#1f7a5a;
+      --verde-oscuro:#166247;
+      --texto:#1f1f1f;
+      --muted:#6d6d6d;
+      --bg:#f6f3ee;
+      --card:rgba(255,255,255,.92);
+      --shadow:0 12px 30px rgba(0,0,0,.08);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Arial,sans-serif}
+    body{
+      background:
+        linear-gradient(rgba(246,243,238,.94),rgba(246,243,238,.96)),
+        url("imagenes/fondo.jpg") center/cover fixed no-repeat;
+      color:var(--texto);
+    }
+
+    .container{max-width:1100px;margin:0 auto;padding:0 18px 24px}
+
+    .top-strip{
+      background:#2f78bd;
+      color:#fff;
+      text-align:center;
+      font-weight:800;
+      font-size:18px;
+      padding:16px 20px;
+    }
+
+    header{
+      background:#fff;
+      box-shadow:var(--shadow);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+
+    .navbar{
+      max-width:1450px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:18px 18px;
+      flex-wrap:wrap;
+    }
+
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo-box{
+      width:62px;
+      height:62px;
+      border:2px dashed rgba(0,0,0,.14);
+      border-radius:16px;
+      background:#fafafa;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .logo-box img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .brand h1{
+      font-size:28px;
+      margin-bottom:4px;
+      line-height:1;
+    }
+
+    .brand p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .main-nav{
+      display:flex;
+      gap:28px;
+      flex-wrap:wrap;
+      justify-content:center;
+      flex:1;
+    }
+
+    .main-nav a{
+      text-decoration:none;
+      color:#24303f;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .main-nav a:hover{color:#2f78bd}
+
+    .hero{
+      margin-top:22px;
+      background:#435d7a;
+      color:#fff;
+      border-radius:26px;
+      padding:34px 24px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .hero h2{
+      font-size:46px;
+      margin-bottom:10px;
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:0 auto;
+      line-height:1.6;
+      color:rgba(255,255,255,.92);
+      font-size:17px;
+    }
+
+    .contact-grid{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .contact-card{
+      background:var(--card);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-card h3{
+      font-size:28px;
+      margin-bottom:14px;
+      color:#1c2735;
+    }
+
+    .contact-card p{
+      color:#4f4f4f;
+      line-height:1.7;
+      font-size:15px;
+      margin-bottom:12px;
+    }
+
+    .whatsapp-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      background:#25D366;
+      color:#fff;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:800;
+      margin-top:8px;
+    }
+
+    .whatsapp-btn:hover{background:#1eb95a}
+
+    .info-list{
+      display:grid;
+      gap:12px;
+      margin-top:10px;
+    }
+
+    .info-item{
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(0,0,0,.05);
+    }
+
+    .info-item strong{
+      display:block;
+      margin-bottom:4px;
+      color:#1f1f1f;
+    }
+
+    .info-item span{
+      color:#5b5b5b;
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    footer{
+      margin-top:26px;
+      background:#fff;
+      border-radius:22px;
+      padding:22px;
+      text-align:center;
+      color:var(--muted);
+      box-shadow:var(--shadow);
+    }
+
+    @media (max-width:900px){
+      .contact-grid{grid-template-columns:1fr}
+      .hero h2{font-size:34px}
+    }
+
+    @media (max-width:640px){
+      .top-strip{font-size:14px}
+      .navbar{padding:14px}
+      .brand h1{font-size:24px}
+      .hero h2{font-size:28px}
+      .contact-card{padding:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    COMPRAS A PARTIR DE 3 UNIDADES (PUEDEN SER SURTIDAS). CONTÁCTANOS POR WHATSAPP PARA COMPRAR
+  </div>
+
+  <header>
+    <div class="navbar">
+      <div class="nav-left">
+        <div class="logo-box">
+          <img src="imagenes/logo.png" alt="Logo Pinverse" onerror="this.style.display='none'; this.parentElement.innerHTML='Logo';">
+        </div>
+        <div class="brand">
+          <h1>Pinverse</h1>
+          <p>Pines coleccionables</p>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html">INICIO</a>
+        <a href="catalogo.html">CATÁLOGO</a>
+        <a href="preguntas.html">PREGUNTAS FRECUENTES</a>
+        <a href="contacto.html">CONTACTO</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero">
+      <h2>Contacto</h2>
+      <p>Haz tu pedido, consulta disponibilidad o pregunta por varias referencias al mismo tiempo. Te respondemos directo por WhatsApp.</p>
+    </section>
+
+    <section class="contact-grid">
+      <div class="contact-card">
+        <h3>Escríbenos</h3>
+        <p>Si ya viste pines que te gusten en el catálogo, envíanos un mensaje con las referencias y te ayudamos con el pedido.</p>
+        <p>Puedes preguntarnos por disponibilidad, cantidad mínima, entrega y recomendaciones.</p>
+
+        <a class="whatsapp-btn" href="https://wa.me/573001112233?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20Pinverse" target="_blank">
+          Ir a WhatsApp
+        </a>
+      </div>
+
+      <div class="contact-card">
+        <h3>Información útil</h3>
+
+        <div class="info-list">
+          <div class="info-item">
+            <strong>WhatsApp</strong>
+            <span>+57 300 111 2233</span>
+          </div>
+
+          <div class="info-item">
+            <strong>Pedidos</strong>
+            <span>Compras a partir de 3 unidades. Pueden ser surtidas.</span>
+          </div>
+
+          <div class="info-item">
+            <strong>Entregas</strong>
+            <span>Consulta por condiciones especiales de entrega y posibles envíos gratis a universidades.</span>
+          </div>
+
+          <div class="info-item">
+            <strong>Atención</strong>
+            <span>Respuesta directa y personalizada para ayudarte con tu compra.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Pinverse · Pines coleccionables con pedidos directos por WhatsApp
+    </footer>
+  </div>
+</body>
+</html>
