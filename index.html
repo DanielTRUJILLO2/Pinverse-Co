@@ -3,47 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pinverse - Inicio</title>
+  <title>Pin Lab Co. - Inicio</title>
+  <link rel="icon" type="image/png" href="imagenes/favicon.png" />
   <style>
     :root{
       --azul:#2f78bd;
-      --verde:#1f7a5a;
-      --verde-oscuro:#166247;
+      --azul-oscuro:#244f82;
       --texto:#1f1f1f;
       --muted:#6d6d6d;
       --bg:#f6f3ee;
       --card:#ffffff;
       --line:#e8e8e8;
       --shadow:0 12px 30px rgba(0,0,0,.08);
+      --shadow-soft:0 8px 18px rgba(0,0,0,.05);
       --radius:22px;
+      --verde:#1f7a5a;
+      --verde-oscuro:#166247;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Arial,sans-serif}
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:"Segoe UI",Arial,sans-serif
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       background:
-        linear-gradient(rgba(246,243,238,.94),rgba(246,243,238,.96)),
-        url("imagenes/fondo.jpg") center/cover fixed no-repeat;
+        radial-gradient(circle at top, rgba(47,120,189,.06), transparent 28%),
+        linear-gradient(to bottom, #f7f4ef 0%, #f6f3ee 100%);
       color:var(--texto);
     }
 
-    .container{max-width:1450px;margin:0 auto;padding:0 18px 24px}
+    .container{
+      max-width:1450px;
+      margin:0 auto;
+      padding:0 18px 24px;
+    }
 
     .top-strip{
-      background:var(--azul);
+      background:linear-gradient(135deg, var(--azul), var(--azul-oscuro));
       color:#fff;
       text-align:center;
       font-weight:800;
-      font-size:18px;
-      padding:16px 20px;
+      font-size:15px;
+      padding:14px 18px;
       letter-spacing:.2px;
+      line-height:1.4;
     }
 
     header{
-      background:#fff;
-      box-shadow:var(--shadow);
+      background:rgba(255,255,255,.96);
+      backdrop-filter: blur(6px);
+      box-shadow:var(--shadow-soft);
       position:sticky;
       top:0;
       z-index:50;
+      border-bottom:1px solid rgba(0,0,0,.03);
     }
 
     .navbar{
@@ -60,16 +80,16 @@
     .nav-left{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:16px;
       min-width:220px;
     }
 
     .logo-box{
-      width:62px;
-      height:62px;
-      border:2px dashed rgba(0,0,0,.14);
-      border-radius:16px;
-      background:#fafafa;
+      width:82px;
+      height:82px;
+      border:none;
+      border-radius:20px;
+      background:transparent;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -87,12 +107,12 @@
     .brand h1{
       font-size:28px;
       line-height:1;
-      margin-bottom:4px;
+      margin-bottom:6px;
     }
 
     .brand p{
       color:var(--muted);
-      font-size:14px;
+      font-size:15px;
     }
 
     .main-nav{
@@ -109,18 +129,21 @@
       color:#24303f;
       font-size:14px;
       font-weight:800;
+      transition:.2s ease;
     }
 
-    .main-nav a:hover{color:var(--azul)}
+    .main-nav a:hover{
+      color:var(--azul);
+    }
 
     .hero{
       margin-top:22px;
-      border-radius:0 0 26px 26px;
+      border-radius:28px;
       overflow:hidden;
-      min-height:440px;
+      min-height:460px;
       box-shadow:var(--shadow);
       background:
-        linear-gradient(180deg, rgba(18,28,42,.10) 0%, rgba(18,28,42,.38) 70%, rgba(18,28,42,.52) 100%),
+        linear-gradient(180deg, rgba(18,28,42,.12) 0%, rgba(18,28,42,.38) 70%, rgba(18,28,42,.55) 100%),
         url("imagenes/banner-principal.jpg") center/cover no-repeat;
       display:flex;
       align-items:flex-end;
@@ -144,7 +167,7 @@
     }
 
     .hero h2{
-      font-size:54px;
+      font-size:56px;
       line-height:1.02;
       max-width:720px;
       margin-bottom:12px;
@@ -153,7 +176,7 @@
 
     .hero p{
       font-size:17px;
-      max-width:520px;
+      max-width:560px;
       line-height:1.6;
       margin-bottom:22px;
       color:rgba(255,255,255,.93);
@@ -182,21 +205,26 @@
       color:#fff;
     }
 
-    .btn-primary:hover{background:var(--verde-oscuro)}
+    .btn-primary:hover{
+      background:var(--verde-oscuro);
+    }
 
     .btn-light{
       background:rgba(255,255,255,.92);
       color:var(--texto);
     }
 
-    .btn-light:hover{background:#fff}
+    .btn-light:hover{
+      background:#fff;
+    }
 
     .section{
       margin-top:28px;
-      background:rgba(255,255,255,.9);
+      background:rgba(255,255,255,.92);
       border-radius:24px;
       padding:28px;
-      box-shadow:var(--shadow);
+      box-shadow:var(--shadow-soft);
+      border:1px solid rgba(0,0,0,.03);
     }
 
     .section-head{
@@ -225,7 +253,7 @@
     .cat-card{
       text-decoration:none;
       color:inherit;
-      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(245,240,235,.95));
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(245,240,235,.95));
       border:1px solid #eee;
       border-radius:22px;
       padding:24px;
@@ -234,6 +262,7 @@
       flex-direction:column;
       justify-content:space-between;
       transition:.2s ease;
+      box-shadow:0 4px 10px rgba(0,0,0,.02);
     }
 
     .cat-card:hover{
@@ -253,42 +282,72 @@
 
     footer{
       margin-top:26px;
-      background:#fff;
+      background:rgba(255,255,255,.92);
       border-radius:22px;
       padding:22px;
       text-align:center;
       color:var(--muted);
-      box-shadow:var(--shadow);
+      box-shadow:var(--shadow-soft);
+      border:1px solid rgba(0,0,0,.03);
     }
 
     @media (max-width:900px){
-      .hero h2{font-size:38px}
+      .hero h2{
+        font-size:38px;
+      }
     }
 
     @media (max-width:640px){
-      .top-strip{font-size:14px}
-      .navbar{padding:14px}
-      .brand h1{font-size:24px}
-      .hero-content{padding:24px}
-      .hero h2{font-size:30px}
-      .section{padding:20px}
+      .top-strip{
+        font-size:14px;
+        padding:12px 14px;
+      }
+
+      .navbar{
+        padding:14px;
+      }
+
+      .logo-box{
+        width:72px;
+        height:72px;
+      }
+
+      .brand h1{
+        font-size:24px;
+      }
+
+      .brand p{
+        font-size:14px;
+      }
+
+      .hero-content{
+        padding:24px;
+      }
+
+      .hero h2{
+        font-size:30px;
+      }
+
+      .section{
+        padding:20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="top-strip">
-    COMPRAS A PARTIR DE 3 UNIDADES (PUEDEN SER SURTIDAS). CONTÁCTANOS POR WHATSAPP PARA COMPRAR
+    COMPRAS A PARTIR DE 3 UNIDADES · PUEDEN SER SURTIDAS · PÍDENOS POR WHATSAPP
   </div>
 
   <header>
     <div class="navbar">
       <div class="nav-left">
         <div class="logo-box">
-          <img src="imagenes/logo.png" alt="Logo Pinverse" onerror="this.style.display='none'; this.parentElement.innerHTML='Logo';">
+          <img src="imagenes/logo.png" alt="Logo Pin Lab Co." onerror="this.style.display='none'; this.parentElement.innerHTML='Logo';">
         </div>
         <div class="brand">
-          <h1>Pinverse</h1>
-          <p>Pines coleccionables</p>
+          <h1>Pin Lab Co.</h1>
+          <p>Pines metálicos coleccionables</p>
         </div>
       </div>
 
@@ -304,13 +363,13 @@
   <div class="container">
     <section class="hero">
       <div class="hero-content">
-        <span class="pill">Pinverse</span>
+        <span class="pill">Pin Lab Co.</span>
         <h2>Tu universo de pines en un solo lugar</h2>
         <p>Diseños únicos, pedidos fáciles y atención directa por WhatsApp.</p>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="catalogo.html">Ver catálogo</a>
-          <a class="btn btn-light" href="https://wa.me/573001112233?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20pines%20de%20Pinverse" target="_blank">Comprar por WhatsApp</a>
+          <a class="btn btn-light" href="https://wa.me/573116821619?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20pines%20de%20Pin%20Lab%20Co." target="_blank">Comprar por WhatsApp</a>
         </div>
       </div>
     </section>
@@ -355,7 +414,7 @@
     </section>
 
     <footer>
-      © 2026 Pinverse · Pines coleccionables con pedidos directos por WhatsApp
+      © 2026 Pin Lab Co. · Pines coleccionables con pedidos directos por WhatsApp
     </footer>
   </div>
 </body>
