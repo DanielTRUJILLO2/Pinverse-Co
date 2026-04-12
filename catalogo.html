@@ -196,13 +196,13 @@
     }
 
     .mobile-toolbar-panel{
-      background:rgba(255,255,255,.72);
+      background:rgba(255,255,255,.84);
       border:1px solid rgba(0,0,0,.04);
-      border-radius:18px;
-      padding:10px;
+      border-radius:20px;
+      padding:12px;
       box-shadow:var(--shadow-soft);
       backdrop-filter: blur(6px);
-}
+    }
 
     .banner{
       margin-top:18px;
@@ -288,6 +288,10 @@
       height:20px;
       stroke:currentColor;
       flex-shrink:0;
+    }
+
+    .filter-trigger span{
+      white-space:nowrap;
     }
 
     .product-counter{
@@ -664,8 +668,8 @@
       }
 
       .logo-box{
-        width:220px;
-        height:220px;
+        width:140px;
+        height:140px;
         margin:0 auto;
       }
 
@@ -727,54 +731,12 @@
         display:none;
       }
 
-      .mobile-toolbar-wrap{
-        display:block;
-        margin-top:4px;
-        margin-bottom:18px;
-        overflow:hidden;
-        transition:max-height .28s ease, opacity .22s ease, transform .22s ease;
-        max-height:260px;
-        opacity:1;
-        transform:translateY(0);
-      }
-
-      .mobile-toolbar-wrap.hidden{
-        max-height:0;
-        opacity:0;
-        transform:translateY(-8px);
-        margin-top:0;
-        margin-bottom:0;
-        pointer-events:none;
-      }
-
-      .mobile-toolbar-wrap .toolbar{
-        grid-template-columns:1fr;
-        gap:10px;
-      }
-
-      .mobile-toolbar-wrap .toolbar input{
-        padding:14px 16px;
-        font-size:14px;
-        border-radius:16px;
-      }
-
-      .mobile-toolbar-wrap .toolbar select{
-        padding:10px 12px;
-        font-size:13px;
-        border-radius:14px;
-        max-width:165px;
-        width:auto;
-        justify-self:start;
-        box-shadow:none;
-        background:#fff;
-      }
-
       .banner{
         display:none;
       }
 
       .section-head{
-        margin:8px 0 14px;
+        margin:14px 0 10px;
         display:flex;
         flex-direction:column;
         align-items:flex-start;
@@ -782,7 +744,8 @@
       }
 
       .section-head h3{
-        font-size:40px;
+        width:100%;
+        font-size:38px;
         line-height:1;
         font-weight:800;
         letter-spacing:-0.8px;
@@ -799,8 +762,16 @@
       .filter-trigger{
         display:flex;
         align-items:center;
+        justify-content:flex-start;
+        gap:8px;
         font-size:14px;
         color:#4d4d4d;
+        flex:1;
+      }
+
+      .filter-trigger svg{
+        width:18px;
+        height:18px;
       }
 
       .product-counter{
@@ -808,6 +779,46 @@
         color:#777;
         margin-left:auto;
         white-space:nowrap;
+        flex-shrink:0;
+      }
+
+      .mobile-toolbar-wrap{
+        display:block;
+        width:100%;
+        margin-top:0;
+        margin-bottom:16px;
+        overflow:hidden;
+        transition:max-height .28s ease, opacity .22s ease, transform .22s ease, margin .22s ease;
+        max-height:220px;
+        opacity:1;
+        transform:translateY(0);
+      }
+
+      .mobile-toolbar-wrap.hidden{
+        max-height:0;
+        opacity:0;
+        transform:translateY(-8px);
+        margin-top:0;
+        margin-bottom:0;
+        pointer-events:none;
+      }
+
+      .mobile-toolbar-panel{
+        width:100%;
+        padding:12px;
+      }
+
+      .mobile-toolbar-wrap .toolbar{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .mobile-toolbar-wrap .toolbar input,
+      .mobile-toolbar-wrap .toolbar select{
+        width:100%;
+        padding:13px 14px;
+        font-size:14px;
+        border-radius:16px;
       }
 
       .products-grid{
@@ -856,6 +867,7 @@
     </div>
   </header>
 
+  <div class="container">
     <section class="banner">
       <h2>Catálogo de pines</h2>
       <p>Explora nuestras referencias y haz tu pedido directo por WhatsApp de forma rápida y fácil.</p>
@@ -865,7 +877,7 @@
       <h3>Productos</h3>
 
       <div class="section-tools">
-        <button type="button" class="filter-trigger" id="filterTrigger" aria-expanded="true">
+        <button type="button" class="filter-trigger" id="filterTrigger" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="4" y1="6" x2="20" y2="6"></line>
             <circle cx="9" cy="6" r="2"></circle>
@@ -877,8 +889,13 @@
           <span>Filtrar y ordenar</span>
         </button>
 
-        <div class="container">
-    <div class="mobile-toolbar-wrap" id="mobileToolbarWrap">
+        <p class="product-counter">
+          <span id="productCount">0</span> productos
+        </p>
+      </div>
+    </section>
+
+    <div class="mobile-toolbar-wrap hidden" id="mobileToolbarWrap">
       <div class="mobile-toolbar-panel">
         <div class="toolbar">
           <input type="text" id="searchInputMobile" placeholder="Buscar pin..." />
@@ -891,12 +908,6 @@
         </div>
       </div>
     </div>
-
-        <p class="product-counter">
-          <span id="productCount">0</span> productos
-        </p>
-      </div>
-    </section>
 
     <section class="products-grid" id="productGrid"></section>
 
@@ -1175,12 +1186,12 @@
 
     window.addEventListener('resize', () => {
       if (window.innerWidth > 640) {
-        setMobileToolbarState(true);
+        setMobileToolbarState(false);
       }
       aplicarFiltros(false);
     });
 
-    setMobileToolbarState(true);
+    setMobileToolbarState(false);
     aplicarFiltros(true);
   </script>
 </body>
