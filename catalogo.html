@@ -588,8 +588,53 @@
     }
 
     @media (max-width: 640px){
+      .navbar{
+        gap:10px;
+      }
+
+      .nav-top{
+        position:relative;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:112px;
+        padding:4px 0;
+      }
+
+      .nav-left{
+        width:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+
+      .brand{
+        display:none;
+      }
+
+      .logo-box{
+        width:108px;
+        height:108px;
+        margin:0 auto;
+      }
+
       .menu-btn{
         display:flex;
+        position:absolute;
+        left:0;
+        top:50%;
+        transform:translateY(-50%);
+        width:48px;
+        height:48px;
+        border:none;
+        border-radius:14px;
+        background:transparent;
+        font-size:34px;
+        cursor:pointer;
+        align-items:center;
+        justify-content:center;
+        z-index:3;
+        color:#222;
       }
 
       .nav-bottom{
@@ -626,11 +671,6 @@
       .banner{
         margin-top:14px;
       }
-
-      .logo-box{
-        width:70px;
-        height:70px;
-      }
     }
   </style>
 </head>
@@ -642,17 +682,13 @@
   <header>
     <div class="navbar">
       <div class="nav-top">
+        <label for="menu-toggle" class="menu-btn">☰</label>
+
         <div class="nav-left">
           <div class="logo-box">
-            <img src="imagenes/logo.png" alt="Logo Pin Lab Co." onerror="this.style.display='none'; this.parentElement.innerHTML='Logo';">
-          </div>
-          <div class="brand">
-            <h1>Pin Lab Co.</h1>
-            <p>Pines metálicos coleccionables</p>
+            <img src="imagenes/logo.png" alt="Logo tu PIN" onerror="this.style.display='none'; this.parentElement.innerHTML='Logo';">
           </div>
         </div>
-
-        <label for="menu-toggle" class="menu-btn">☰</label>
       </div>
 
       <input type="checkbox" id="menu-toggle" class="menu-toggle">
