@@ -198,11 +198,11 @@
     .mobile-toolbar-panel{
       background:rgba(255,255,255,.72);
       border:1px solid rgba(0,0,0,.04);
-      border-radius:20px;
-      padding:12px;
+      border-radius:18px;
+      padding:10px;
       box-shadow:var(--shadow-soft);
       backdrop-filter: blur(6px);
-    }
+}
 
     .banner{
       margin-top:18px;
@@ -664,8 +664,8 @@
       }
 
       .logo-box{
-        width:110px;
-        height:110px;
+        width:220px;
+        height:220px;
         margin:0 auto;
       }
 
@@ -729,8 +729,8 @@
 
       .mobile-toolbar-wrap{
         display:block;
-        margin-top:6px;
-        margin-bottom:16px;
+        margin-top:4px;
+        margin-bottom:18px;
         overflow:hidden;
         transition:max-height .28s ease, opacity .22s ease, transform .22s ease;
         max-height:260px;
@@ -856,21 +856,6 @@
     </div>
   </header>
 
-  <div class="container">
-    <div class="mobile-toolbar-wrap" id="mobileToolbarWrap">
-      <div class="mobile-toolbar-panel">
-        <div class="toolbar">
-          <input type="text" id="searchInputMobile" placeholder="Buscar pin..." />
-          <select id="sortSelectMobile">
-            <option value="default">Ordenar por</option>
-            <option value="name">Nombre A-Z</option>
-            <option value="low">Precio menor a mayor</option>
-            <option value="high">Precio mayor a menor</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
     <section class="banner">
       <h2>Catálogo de pines</h2>
       <p>Explora nuestras referencias y haz tu pedido directo por WhatsApp de forma rápida y fácil.</p>
@@ -891,6 +876,21 @@
           </svg>
           <span>Filtrar y ordenar</span>
         </button>
+
+        <div class="container">
+    <div class="mobile-toolbar-wrap" id="mobileToolbarWrap">
+      <div class="mobile-toolbar-panel">
+        <div class="toolbar">
+          <input type="text" id="searchInputMobile" placeholder="Buscar pin..." />
+          <select id="sortSelectMobile">
+            <option value="default">Ordenar por</option>
+            <option value="name">Nombre A-Z</option>
+            <option value="low">Precio menor a mayor</option>
+            <option value="high">Precio mayor a menor</option>
+          </select>
+        </div>
+      </div>
+    </div>
 
         <p class="product-counter">
           <span id="productCount">0</span> productos
