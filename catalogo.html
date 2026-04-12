@@ -56,12 +56,11 @@
     }
 
     header{
-  background:rgba(255,255,255,.96);
-  backdrop-filter: blur(6px);
-  box-shadow:var(--shadow-soft);
-  position:relative;
-  border-bottom:1px solid rgba(0,0,0,.03);
-}
+      background:rgba(255,255,255,.96);
+      backdrop-filter: blur(6px);
+      box-shadow:var(--shadow-soft);
+      border-bottom:1px solid rgba(0,0,0,.03);
+    }
 
     .navbar{
       width:min(100%, 1400px);
@@ -196,6 +195,15 @@
       display:none;
     }
 
+    .mobile-toolbar-panel{
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(0,0,0,.04);
+      border-radius:20px;
+      padding:12px;
+      box-shadow:var(--shadow-soft);
+      backdrop-filter: blur(6px);
+    }
+
     .banner{
       margin-top:18px;
       padding:26px 20px;
@@ -253,6 +261,40 @@
     .section-head p{
       color:var(--muted);
       font-size:14px;
+    }
+
+    .section-tools{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      width:100%;
+    }
+
+    .filter-trigger{
+      display:none;
+      align-items:center;
+      gap:10px;
+      border:none;
+      background:transparent;
+      padding:0;
+      font-size:15px;
+      color:#4b4b4b;
+      cursor:pointer;
+    }
+
+    .filter-trigger svg{
+      width:20px;
+      height:20px;
+      stroke:currentColor;
+      flex-shrink:0;
+    }
+
+    .product-counter{
+      color:var(--muted);
+      font-size:14px;
+      margin-left:auto;
+      white-space:nowrap;
     }
 
     .products-grid{
@@ -687,8 +729,22 @@
 
       .mobile-toolbar-wrap{
         display:block;
-        margin-top:14px;
-        margin-bottom:8px;
+        margin-top:6px;
+        margin-bottom:16px;
+        overflow:hidden;
+        transition:max-height .28s ease, opacity .22s ease, transform .22s ease;
+        max-height:260px;
+        opacity:1;
+        transform:translateY(0);
+      }
+
+      .mobile-toolbar-wrap.hidden{
+        max-height:0;
+        opacity:0;
+        transform:translateY(-8px);
+        margin-top:0;
+        margin-bottom:0;
+        pointer-events:none;
       }
 
       .mobile-toolbar-wrap .toolbar{
@@ -696,11 +752,21 @@
         gap:10px;
       }
 
-      .mobile-toolbar-wrap .toolbar input,
-      .mobile-toolbar-wrap .toolbar select{
+      .mobile-toolbar-wrap .toolbar input{
         padding:14px 16px;
         font-size:14px;
         border-radius:16px;
+      }
+
+      .mobile-toolbar-wrap .toolbar select{
+        padding:10px 12px;
+        font-size:13px;
+        border-radius:14px;
+        max-width:165px;
+        width:auto;
+        justify-self:start;
+        box-shadow:none;
+        background:#fff;
       }
 
       .banner{
@@ -708,15 +774,44 @@
       }
 
       .section-head{
-        margin:14px 0 12px;
+        margin:8px 0 14px;
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
       }
 
       .section-head h3{
-        font-size:23px;
+        font-size:40px;
+        line-height:1;
+        font-weight:800;
+        letter-spacing:-0.8px;
       }
 
-      .section-head p{
+      .section-tools{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        width:100%;
+        gap:12px;
+      }
+
+      .filter-trigger{
+        display:flex;
+        align-items:center;
+        font-size:14px;
+        color:#4d4d4d;
+      }
+
+      .product-counter{
         font-size:13px;
+        color:#777;
+        margin-left:auto;
+        white-space:nowrap;
+      }
+
+      .products-grid{
+        gap:12px;
       }
     }
   </style>
@@ -762,15 +857,17 @@
   </header>
 
   <div class="container">
-    <div class="mobile-toolbar-wrap">
-      <div class="toolbar">
-        <input type="text" id="searchInputMobile" placeholder="Buscar pin..." />
-        <select id="sortSelectMobile">
-          <option value="default">Ordenar por</option>
-          <option value="name">Nombre A-Z</option>
-          <option value="low">Precio menor a mayor</option>
-          <option value="high">Precio mayor a menor</option>
-        </select>
+    <div class="mobile-toolbar-wrap" id="mobileToolbarWrap">
+      <div class="mobile-toolbar-panel">
+        <div class="toolbar">
+          <input type="text" id="searchInputMobile" placeholder="Buscar pin..." />
+          <select id="sortSelectMobile">
+            <option value="default">Ordenar por</option>
+            <option value="name">Nombre A-Z</option>
+            <option value="low">Precio menor a mayor</option>
+            <option value="high">Precio mayor a menor</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -780,8 +877,25 @@
     </section>
 
     <section class="section-head">
-      <h3>Todos los productos</h3>
-      <p><span id="productCount">0</span> productos visibles</p>
+      <h3>Productos</h3>
+
+      <div class="section-tools">
+        <button type="button" class="filter-trigger" id="filterTrigger" aria-expanded="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <circle cx="9" cy="6" r="2"></circle>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <circle cx="15" cy="12" r="2"></circle>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+            <circle cx="11" cy="18" r="2"></circle>
+          </svg>
+          <span>Filtrar y ordenar</span>
+        </button>
+
+        <p class="product-counter">
+          <span id="productCount">0</span> productos
+        </p>
+      </div>
     </section>
 
     <section class="products-grid" id="productGrid"></section>
@@ -803,6 +917,8 @@
     const productGrid = document.getElementById('productGrid');
     const productCount = document.getElementById('productCount');
     const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const filterTrigger = document.getElementById('filterTrigger');
+    const mobileToolbarWrap = document.getElementById('mobileToolbarWrap');
 
     const whatsappNumber = '573116821619';
 
@@ -1019,6 +1135,12 @@
       renderProductos(filtrados);
     }
 
+    function setMobileToolbarState(show) {
+      if (!mobileToolbarWrap || !filterTrigger) return;
+      mobileToolbarWrap.classList.toggle('hidden', !show);
+      filterTrigger.setAttribute('aria-expanded', show ? 'true' : 'false');
+    }
+
     loadMoreBtn.addEventListener('click', () => {
       visibleCount += LOAD_MORE_STEP;
       renderProductos(filteredProducts);
@@ -1044,10 +1166,21 @@
       aplicarFiltros(true);
     });
 
+    if (filterTrigger && mobileToolbarWrap) {
+      filterTrigger.addEventListener('click', () => {
+        const isHidden = mobileToolbarWrap.classList.contains('hidden');
+        setMobileToolbarState(isHidden);
+      });
+    }
+
     window.addEventListener('resize', () => {
+      if (window.innerWidth > 640) {
+        setMobileToolbarState(true);
+      }
       aplicarFiltros(false);
     });
 
+    setMobileToolbarState(true);
     aplicarFiltros(true);
   </script>
 </body>
