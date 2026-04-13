@@ -56,12 +56,12 @@
     }
 
     header{
-  background:rgba(255,255,255,.96);
-  backdrop-filter: blur(6px);
-  box-shadow:var(--shadow-soft);
-  border-bottom:1px solid rgba(0,0,0,.03);
-  position:static;
-}
+      background:rgba(255,255,255,.96);
+      backdrop-filter: blur(6px);
+      box-shadow:var(--shadow-soft);
+      border-bottom:1px solid rgba(0,0,0,.03);
+      position:static;
+    }
 
     .navbar{
       width:min(100%, 1400px);
@@ -75,23 +75,22 @@
     .nav-top{
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:center;
       gap:18px;
     }
 
     .nav-left{
       display:flex;
       align-items:center;
-      gap:16px;
-      min-width:0;
-      flex:1;
+      justify-content:center;
+      width:100%;
     }
 
     .logo-box{
-      width:108px;
-      height:108px;
+      width:200px;
+      height:200px;
       border:none;
-      border-radius:18px;
+      border-radius:20px;
       background:transparent;
       display:flex;
       align-items:center;
@@ -107,36 +106,9 @@
       display:block;
     }
 
-    .nav-top{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:18px;
-}
-
-.nav-left{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-}
-
-.logo-box{
-  width:200px;
-  height:200px;
-  border:none;
-  border-radius:20px;
-  background:transparent;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  flex-shrink:0;
-}
-
-.brand{
-  display:none;
-}
+    .brand{
+      display:none;
+    }
 
     .menu-toggle{
       display:none;
@@ -160,7 +132,7 @@
     .nav-bottom{
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:flex-start;
       gap:22px;
       padding-top:4px;
     }
@@ -171,7 +143,7 @@
       justify-content:flex-start;
       gap:30px;
       flex-wrap:wrap;
-      flex:1;
+      width:100%;
     }
 
     .main-nav a{
@@ -207,16 +179,11 @@
     }
 
     .toolbar{
-  display:grid;
-  grid-template-columns:minmax(280px, 360px) 220px;
-  gap:12px;
-  flex-shrink:0;
-  align-items:center;
-}
-
-.nav-bottom > .toolbar{
-  display:none;
-}
+      display:grid;
+      grid-template-columns:minmax(280px, 360px) 220px;
+      gap:12px;
+      align-items:center;
+    }
 
     .toolbar input,
     .toolbar select{
@@ -238,34 +205,39 @@
       box-shadow:0 0 0 4px rgba(47,120,189,.08);
     }
 
-    .mobile-toolbar-wrap{
-  display:block;
-  width:100%;
-  margin-top:0;
-  margin-bottom:16px;
-  overflow:hidden;
-  transition:max-height .28s ease, opacity .22s ease, transform .22s ease, margin .22s ease;
-  max-height:220px;
-  opacity:1;
-  transform:translateY(0);
-}
+    .filter-panel-wrap{
+      display:block;
+      width:100%;
+      margin-top:0;
+      margin-bottom:16px;
+      overflow:hidden;
+      transition:max-height .28s ease, opacity .22s ease, transform .22s ease, margin .22s ease;
+      max-height:220px;
+      opacity:1;
+      transform:translateY(0);
+    }
 
-.mobile-toolbar-wrap.hidden{
-  max-height:0;
-  opacity:0;
-  transform:translateY(-8px);
-  margin-top:0;
-  margin-bottom:0;
-  pointer-events:none;
-}
+    .filter-panel-wrap.hidden{
+      max-height:0;
+      opacity:0;
+      transform:translateY(-8px);
+      margin-top:0;
+      margin-bottom:0;
+      pointer-events:none;
+    }
 
-    .mobile-toolbar-panel{
+    .filter-panel{
       background:rgba(255,255,255,.84);
       border:1px solid rgba(0,0,0,.04);
       border-radius:20px;
       padding:12px;
       box-shadow:var(--shadow-soft);
       backdrop-filter: blur(6px);
+    }
+
+    .filter-panel-wrap .toolbar{
+      grid-template-columns:minmax(280px, 360px) 220px;
+      justify-content:flex-start;
     }
 
     .banner{
@@ -345,16 +317,17 @@
     }
 
     .filter-trigger{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  border:none;
-  background:transparent;
-  padding:0;
-  font-size:15px;
-  color:#4b4b4b;
-  cursor:pointer;
-}
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:none;
+      background:transparent;
+      padding:0;
+      font-size:15px;
+      color:#4b4b4b;
+      cursor:pointer;
+      font-weight:700;
+    }
 
     .filter-trigger svg{
       width:20px;
@@ -586,7 +559,7 @@
     }
 
     @media (max-width: 1199px){
-      .toolbar{
+      .filter-panel-wrap .toolbar{
         grid-template-columns:minmax(220px, 300px) 200px;
       }
 
@@ -615,14 +588,14 @@
       }
 
       .nav-top{
-  align-items:center;
-  justify-content:center;
-}
+        align-items:center;
+        justify-content:center;
+      }
 
-.logo-box{
-  width:130px;
-  height:130px;
-}
+      .logo-box{
+        width:130px;
+        height:130px;
+      }
 
       .nav-bottom{
         flex-direction:column;
@@ -636,7 +609,7 @@
         gap:22px;
       }
 
-      .toolbar{
+      .filter-panel-wrap .toolbar{
         width:100%;
         grid-template-columns:1fr 200px;
       }
@@ -763,10 +736,6 @@
         display:flex;
       }
 
-      .nav-bottom .toolbar{
-        display:none;
-      }
-
       .banner{
         display:none;
       }
@@ -818,7 +787,7 @@
         flex-shrink:0;
       }
 
-      .mobile-toolbar-wrap{
+      .filter-panel-wrap{
         display:block;
         width:100%;
         margin-top:0;
@@ -830,7 +799,7 @@
         transform:translateY(0);
       }
 
-      .mobile-toolbar-wrap.hidden{
+      .filter-panel-wrap.hidden{
         max-height:0;
         opacity:0;
         transform:translateY(-8px);
@@ -839,18 +808,18 @@
         pointer-events:none;
       }
 
-      .mobile-toolbar-panel{
+      .filter-panel{
         width:100%;
         padding:12px;
       }
 
-      .mobile-toolbar-wrap .toolbar{
+      .filter-panel-wrap .toolbar{
         grid-template-columns:1fr;
         gap:10px;
       }
 
-      .mobile-toolbar-wrap .toolbar input,
-      .mobile-toolbar-wrap .toolbar select{
+      .filter-panel-wrap .toolbar input,
+      .filter-panel-wrap .toolbar select{
         width:100%;
         padding:13px 14px;
         font-size:14px;
@@ -917,16 +886,6 @@
           <a href="preguntas.html">PREGUNTAS FRECUENTES</a>
           <a href="contacto.html">CONTACTO</a>
         </nav>
-
-        <div class="toolbar">
-          <input type="text" id="searchInputDesktop" placeholder="Buscar pin..." />
-          <select id="sortSelectDesktop">
-            <option value="default">Ordenar por</option>
-            <option value="name">Nombre A-Z</option>
-            <option value="low">Precio menor a mayor</option>
-            <option value="high">Precio mayor a menor</option>
-          </select>
-        </div>
       </div>
     </div>
   </header>
@@ -959,11 +918,11 @@
       </div>
     </section>
 
-    <div class="mobile-toolbar-wrap hidden" id="mobileToolbarWrap">
-      <div class="mobile-toolbar-panel">
+    <div class="filter-panel-wrap hidden" id="filterPanelWrap">
+      <div class="filter-panel">
         <div class="toolbar">
-          <input type="text" id="searchInputMobile" placeholder="Buscar pin..." />
-          <select id="sortSelectMobile">
+          <input type="text" id="searchInputPanel" placeholder="Buscar pin..." />
+          <select id="sortSelectPanel">
             <option value="default">Ordenar por</option>
             <option value="name">Nombre A-Z</option>
             <option value="low">Precio menor a mayor</option>
@@ -985,15 +944,13 @@
   </div>
 
   <script>
-    const searchInputDesktop = document.getElementById('searchInputDesktop');
-    const sortSelectDesktop = document.getElementById('sortSelectDesktop');
-    const searchInputMobile = document.getElementById('searchInputMobile');
-    const sortSelectMobile = document.getElementById('sortSelectMobile');
+    const searchInputPanel = document.getElementById('searchInputPanel');
+    const sortSelectPanel = document.getElementById('sortSelectPanel');
     const productGrid = document.getElementById('productGrid');
     const productCount = document.getElementById('productCount');
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     const filterTrigger = document.getElementById('filterTrigger');
-    const mobileToolbarWrap = document.getElementById('mobileToolbarWrap');
+    const filterPanelWrap = document.getElementById('filterPanelWrap');
 
     const whatsappNumber = '573116821619';
 
@@ -1091,26 +1048,12 @@
     let visibleCount = INITIAL_VISIBLE;
     let filteredProducts = [...productos];
 
-    function isMobileView() {
-      return window.innerWidth <= 640;
-    }
-
     function getActiveSearchInput() {
-      return isMobileView() ? searchInputMobile : searchInputDesktop;
+      return searchInputPanel;
     }
 
     function getActiveSortSelect() {
-      return isMobileView() ? sortSelectMobile : sortSelectDesktop;
-    }
-
-    function syncControls(source) {
-      if (source === 'desktop') {
-        searchInputMobile.value = searchInputDesktop.value;
-        sortSelectMobile.value = sortSelectDesktop.value;
-      } else {
-        searchInputDesktop.value = searchInputMobile.value;
-        sortSelectDesktop.value = sortSelectMobile.value;
-      }
+      return sortSelectPanel;
     }
 
     function formatoCOP(valor) {
@@ -1208,9 +1151,9 @@
       renderProductos(filtrados);
     }
 
-    function setMobileToolbarState(show) {
-      if (!mobileToolbarWrap || !filterTrigger) return;
-      mobileToolbarWrap.classList.toggle('hidden', !show);
+    function setFilterPanelState(show) {
+      if (!filterPanelWrap || !filterTrigger) return;
+      filterPanelWrap.classList.toggle('hidden', !show);
       filterTrigger.setAttribute('aria-expanded', show ? 'true' : 'false');
     }
 
@@ -1219,41 +1162,26 @@
       renderProductos(filteredProducts);
     });
 
-    searchInputDesktop.addEventListener('input', () => {
-      syncControls('desktop');
+    searchInputPanel.addEventListener('input', () => {
       aplicarFiltros(true);
     });
 
-    sortSelectDesktop.addEventListener('change', () => {
-      syncControls('desktop');
+    sortSelectPanel.addEventListener('change', () => {
       aplicarFiltros(true);
     });
 
-    searchInputMobile.addEventListener('input', () => {
-      syncControls('mobile');
-      aplicarFiltros(true);
-    });
-
-    sortSelectMobile.addEventListener('change', () => {
-      syncControls('mobile');
-      aplicarFiltros(true);
-    });
-
-    if (filterTrigger && mobileToolbarWrap) {
+    if (filterTrigger && filterPanelWrap) {
       filterTrigger.addEventListener('click', () => {
-        const isHidden = mobileToolbarWrap.classList.contains('hidden');
-        setMobileToolbarState(isHidden);
+        const isHidden = filterPanelWrap.classList.contains('hidden');
+        setFilterPanelState(isHidden);
       });
     }
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 640) {
-        setMobileToolbarState(false);
-      }
       aplicarFiltros(false);
     });
 
-    setMobileToolbarState(false);
+    setFilterPanelState(false);
     aplicarFiltros(true);
   </script>
 </body>
