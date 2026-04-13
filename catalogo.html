@@ -45,15 +45,45 @@
     }
 
     .top-strip{
-      background:linear-gradient(135deg, var(--azul), var(--azul-oscuro));
-      color:#fff;
-      text-align:center;
-      font-weight:700;
-      font-size:13px;
-      line-height:1.4;
-      padding:12px 14px;
-      letter-spacing:.2px;
-    }
+  background:linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 14px;
+}
+
+.top-strip-slider{
+  position:relative;
+  width:100%;
+  max-width:1200px;
+  height:46px;
+}
+
+.top-strip-message{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-weight:700;
+  font-size:13px;
+  line-height:1.4;
+  letter-spacing:.2px;
+  opacity:0;
+  transform:translateX(30px);
+  transition:opacity .45s ease, transform .45s ease;
+  padding:0 10px;
+}
+
+.top-strip-message.active{
+  opacity:1;
+  transform:translateX(0);
+}
 
     header{
       background:rgba(255,255,255,.96);
@@ -638,10 +668,19 @@
 
     @media (max-width: 640px){
       .top-strip{
-        font-size:11px;
-        line-height:1.35;
-        padding:10px 12px;
-      }
+  min-height:42px;
+  padding:0 12px;
+}
+
+.top-strip-slider{
+  height:42px;
+}
+
+.top-strip-message{
+  font-size:11px;
+  line-height:1.35;
+  padding:0 8px;
+}
 
       header{
         position:relative;
@@ -862,8 +901,13 @@
 </head>
 <body>
   <div class="top-strip">
-    COMPRAS A PARTIR DE 3 UNIDADES · PUEDEN SER SURTIDAS · PÍDENOS POR WHATSAPP
+  <div class="top-strip-slider" id="topStripSlider">
+    <span class="top-strip-message active">BOLSAS DE EMPAQUE GRATIS</span>
+    <span class="top-strip-message">PROMOCIONES APARTIR DE 2 O 3 PINES</span>
+    <span class="top-strip-message">PÍDENOS POR WHATSAPP Y ARMA TU SURTIDO</span>
+    <span class="top-strip-message">ENVÍOS GRATIS A UNIVERSIDADES</span>
   </div>
+</div>
 
   <header>
     <div class="navbar">
@@ -1183,6 +1227,20 @@
 
     setFilterPanelState(false);
     aplicarFiltros(true);
+
+    const topStripMessages = document.querySelectorAll('.top-strip-message');
+let topStripIndex = 0;
+
+function rotateTopStripMessages() {
+  if (!topStripMessages.length) return;
+
+  topStripMessages[topStripIndex].classList.remove('active');
+  topStripIndex = (topStripIndex + 1) % topStripMessages.length;
+  topStripMessages[topStripIndex].classList.add('active');
+}
+
+setInterval(rotateTopStripMessages, 3000);
+
   </script>
 </body>
 </html>
