@@ -41,7 +41,7 @@
     .container{
       width:min(100%, 1400px);
       margin:0 auto;
-      padding:0 14px 28px;
+      padding:0 18px 30px;
     }
 
     .top-strip{
@@ -56,41 +56,42 @@
     }
 
     header{
-      background:rgba(255,255,255,.96);
-      backdrop-filter: blur(6px);
-      box-shadow:var(--shadow-soft);
-      border-bottom:1px solid rgba(0,0,0,.03);
-    }
+  background:rgba(255,255,255,.96);
+  backdrop-filter: blur(6px);
+  box-shadow:var(--shadow-soft);
+  border-bottom:1px solid rgba(0,0,0,.03);
+  position:static;
+}
 
     .navbar{
       width:min(100%, 1400px);
       margin:0 auto;
       display:flex;
       flex-direction:column;
-      gap:14px;
-      padding:14px;
+      gap:18px;
+      padding:18px;
     }
 
     .nav-top{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap:18px;
     }
 
     .nav-left{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:16px;
       min-width:0;
       flex:1;
     }
 
     .logo-box{
-      width:180px;
-      height:180px;
+      width:108px;
+      height:108px;
       border:none;
-      border-radius:20px;
+      border-radius:18px;
       background:transparent;
       display:flex;
       align-items:center;
@@ -106,23 +107,36 @@
       display:block;
     }
 
-    .brand{
-      min-width:0;
-    }
+    .nav-top{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+}
 
-    .brand h1{
-      font-size:18px;
-      line-height:1.1;
-      margin-bottom:3px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
+.nav-left{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+}
 
-    .brand p{
-      color:var(--muted);
-      font-size:13px;
-    }
+.logo-box{
+  width:200px;
+  height:200px;
+  border:none;
+  border-radius:20px;
+  background:transparent;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.brand{
+  display:none;
+}
 
     .menu-toggle{
       display:none;
@@ -143,46 +157,79 @@
       user-select:none;
     }
 
+    .nav-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+      padding-top:4px;
+    }
+
     .main-nav{
       display:flex;
       align-items:center;
-      justify-content:center;
-      gap:18px;
+      justify-content:flex-start;
+      gap:30px;
       flex-wrap:wrap;
+      flex:1;
     }
 
     .main-nav a{
       text-decoration:none;
       color:#24303f;
-      font-size:13px;
+      font-size:14px;
       font-weight:800;
       letter-spacing:.3px;
-      padding:8px 0;
+      padding:10px 0;
       transition:.2s ease;
       position:relative;
+      white-space:nowrap;
+    }
+
+    .main-nav a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:4px;
+      width:0;
+      height:3px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+      transition:width .22s ease;
     }
 
     .main-nav a:hover{
       color:var(--azul);
     }
 
-    .toolbar{
-      display:grid;
-      grid-template-columns:1fr 180px;
-      gap:10px;
+    .main-nav a:hover::after{
+      width:100%;
     }
+
+    .toolbar{
+  display:grid;
+  grid-template-columns:minmax(280px, 360px) 220px;
+  gap:12px;
+  flex-shrink:0;
+  align-items:center;
+}
+
+.nav-bottom > .toolbar{
+  display:none;
+}
 
     .toolbar input,
     .toolbar select{
       width:100%;
       border:1px solid var(--line);
-      border-radius:14px;
-      padding:12px 14px;
+      border-radius:15px;
+      padding:13px 16px;
       background:#fff;
       font-size:14px;
       outline:none;
       transition:.2s ease;
       box-shadow:0 2px 6px rgba(0,0,0,.02);
+      color:#333;
     }
 
     .toolbar input:focus,
@@ -192,8 +239,25 @@
     }
 
     .mobile-toolbar-wrap{
-      display:none;
-    }
+  display:block;
+  width:100%;
+  margin-top:0;
+  margin-bottom:16px;
+  overflow:hidden;
+  transition:max-height .28s ease, opacity .22s ease, transform .22s ease, margin .22s ease;
+  max-height:220px;
+  opacity:1;
+  transform:translateY(0);
+}
+
+.mobile-toolbar-wrap.hidden{
+  max-height:0;
+  opacity:0;
+  transform:translateY(-8px);
+  margin-top:0;
+  margin-bottom:0;
+  pointer-events:none;
+}
 
     .mobile-toolbar-panel{
       background:rgba(255,255,255,.84);
@@ -205,40 +269,52 @@
     }
 
     .banner{
-      margin-top:18px;
-      padding:26px 20px;
+      margin-top:22px;
+      padding:38px 28px;
       background:linear-gradient(135deg, #557396, #2f78bd);
       color:#fff;
-      border-radius:28px;
+      border-radius:30px;
       text-align:center;
       box-shadow:var(--shadow);
       position:relative;
       overflow:hidden;
     }
 
+    .banner::before{
+      content:"";
+      position:absolute;
+      top:-70px;
+      left:-70px;
+      width:200px;
+      height:200px;
+      border-radius:50%;
+      background:rgba(255,255,255,.06);
+    }
+
     .banner::after{
       content:"";
       position:absolute;
       inset:auto -60px -60px auto;
-      width:180px;
-      height:180px;
+      width:190px;
+      height:190px;
       background:rgba(255,255,255,.08);
       border-radius:50%;
       filter:blur(2px);
     }
 
     .banner h2{
-      font-size:28px;
-      margin-bottom:8px;
+      font-size:44px;
+      margin-bottom:10px;
       position:relative;
       z-index:1;
+      font-weight:800;
     }
 
     .banner p{
-      max-width:800px;
+      max-width:820px;
       margin:0 auto;
       line-height:1.55;
-      font-size:14px;
+      font-size:16px;
       color:rgba(255,255,255,.92);
       position:relative;
       z-index:1;
@@ -250,17 +326,14 @@
       justify-content:space-between;
       gap:12px;
       flex-wrap:wrap;
-      margin:24px 0 12px;
+      margin:28px 0 16px;
     }
 
     .section-head h3{
-      font-size:26px;
-      line-height:1.1;
-    }
-
-    .section-head p{
-      color:var(--muted);
-      font-size:14px;
+      font-size:44px;
+      line-height:1.05;
+      font-weight:800;
+      letter-spacing:-.8px;
     }
 
     .section-tools{
@@ -272,16 +345,16 @@
     }
 
     .filter-trigger{
-      display:none;
-      align-items:center;
-      gap:10px;
-      border:none;
-      background:transparent;
-      padding:0;
-      font-size:15px;
-      color:#4b4b4b;
-      cursor:pointer;
-    }
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:none;
+  background:transparent;
+  padding:0;
+  font-size:15px;
+  color:#4b4b4b;
+  cursor:pointer;
+}
 
     .filter-trigger svg{
       width:20px;
@@ -296,20 +369,20 @@
 
     .product-counter{
       color:var(--muted);
-      font-size:14px;
+      font-size:16px;
       margin-left:auto;
       white-space:nowrap;
     }
 
     .products-grid{
       display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:14px;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:24px;
     }
 
     .product-card{
       background:var(--card);
-      border-radius:20px;
+      border-radius:22px;
       overflow:hidden;
       box-shadow:var(--shadow-soft);
       display:flex;
@@ -320,8 +393,8 @@
     }
 
     .product-card:hover{
-      transform:translateY(-3px);
-      box-shadow:0 16px 28px rgba(0,0,0,.10);
+      transform:translateY(-4px);
+      box-shadow:0 18px 30px rgba(0,0,0,.11);
     }
 
     .image-area{
@@ -335,10 +408,10 @@
 
     .tag{
       position:absolute;
-      top:10px;
-      left:10px;
+      top:12px;
+      left:12px;
       color:#fff;
-      padding:6px 10px;
+      padding:7px 11px;
       border-radius:999px;
       font-size:11px;
       font-weight:700;
@@ -394,31 +467,31 @@
     }
 
     .product-body{
-      padding:12px;
+      padding:18px;
       display:flex;
       flex-direction:column;
-      gap:8px;
+      gap:9px;
       flex-grow:1;
     }
 
     .product-title{
-      font-size:15px;
+      font-size:19px;
       font-weight:800;
       line-height:1.25;
       display:-webkit-box;
       -webkit-line-clamp:2;
       -webkit-box-orient:vertical;
       overflow:hidden;
-      min-height:38px;
+      min-height:48px;
     }
 
     .product-ref{
       color:var(--muted);
-      font-size:12px;
+      font-size:14px;
     }
 
     .product-price{
-      font-size:20px;
+      font-size:27px;
       font-weight:800;
       line-height:1;
       color:#1e2a36;
@@ -426,30 +499,30 @@
 
     .product-desc{
       color:var(--muted);
-      font-size:12px;
-      line-height:1.45;
+      font-size:14px;
+      line-height:1.5;
       display:-webkit-box;
       -webkit-line-clamp:3;
       -webkit-box-orient:vertical;
       overflow:hidden;
-      min-height:52px;
+      min-height:62px;
     }
 
     .product-actions{
       margin-top:auto;
       display:grid;
       gap:8px;
-      padding-top:4px;
+      padding-top:6px;
     }
 
     .btn-product{
       width:100%;
       text-align:center;
       text-decoration:none;
-      padding:11px 12px;
-      border-radius:13px;
+      padding:13px 14px;
+      border-radius:14px;
       font-weight:800;
-      font-size:12px;
+      font-size:14px;
       transition:.2s ease;
     }
 
@@ -474,14 +547,14 @@
     .load-more-wrap{
       display:flex;
       justify-content:center;
-      margin-top:20px;
+      margin-top:24px;
     }
 
     .load-more-btn{
       border:none;
       background:linear-gradient(135deg, var(--azul), var(--azul-oscuro));
       color:#fff;
-      padding:14px 22px;
+      padding:15px 24px;
       border-radius:14px;
       font-size:14px;
       font-weight:800;
@@ -500,10 +573,10 @@
     }
 
     footer{
-      margin-top:26px;
+      margin-top:30px;
       background:rgba(255,255,255,.92);
       border-radius:18px;
-      padding:18px;
+      padding:20px;
       text-align:center;
       color:var(--muted);
       box-shadow:var(--shadow-soft);
@@ -512,34 +585,73 @@
       border:1px solid rgba(0,0,0,.03);
     }
 
-    @media (min-width: 641px){
-      .container{
-        padding:0 18px 30px;
+    @media (max-width: 1199px){
+      .toolbar{
+        grid-template-columns:minmax(220px, 300px) 200px;
       }
 
-      .navbar{
-        padding:16px 18px;
-      }
-
-      .logo-box{
-        width:180px;
-        height:180px;
-      }
-
-      .brand h1{
-        font-size:24px;
-      }
-
-      .brand p{
-        font-size:14px;
-      }
-
-      .banner{
-        padding:30px 24px;
+      .products-grid{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:20px;
       }
 
       .banner h2{
-        font-size:36px;
+        font-size:38px;
+      }
+
+      .section-head h3{
+        font-size:38px;
+      }
+    }
+
+    @media (max-width: 991px){
+      .container{
+        padding:0 16px 28px;
+      }
+
+      .navbar{
+        gap:14px;
+        padding:16px;
+      }
+
+      .nav-top{
+  align-items:center;
+  justify-content:center;
+}
+
+.logo-box{
+  width:130px;
+  height:130px;
+}
+
+      .nav-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:14px;
+      }
+
+      .main-nav{
+        width:100%;
+        justify-content:flex-start;
+        gap:22px;
+      }
+
+      .toolbar{
+        width:100%;
+        grid-template-columns:1fr 200px;
+      }
+
+      .products-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:18px;
+      }
+
+      .banner{
+        padding:32px 22px;
+      }
+
+      .banner h2{
+        font-size:34px;
       }
 
       .banner p{
@@ -549,90 +661,6 @@
       .section-head h3{
         font-size:34px;
       }
-
-      .products-grid{
-        grid-template-columns:repeat(3, minmax(0, 1fr));
-        gap:18px;
-      }
-
-      .product-title{
-        font-size:18px;
-        min-height:44px;
-      }
-
-      .product-price{
-        font-size:24px;
-      }
-
-      .product-desc{
-        font-size:13px;
-      }
-
-      .btn-product{
-        font-size:13px;
-      }
-    }
-
-    @media (min-width: 992px){
-      .navbar{
-        display:flex;
-        flex-direction:column;
-        gap:16px;
-        padding:18px;
-      }
-
-      .nav-top{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:20px;
-      }
-
-      .main-nav{
-        justify-content:center;
-        gap:28px;
-      }
-
-      .main-nav a{
-        font-size:14px;
-      }
-
-      .toolbar{
-        grid-template-columns:minmax(260px, 340px) 220px;
-        justify-content:end;
-      }
-
-      .products-grid{
-        grid-template-columns:repeat(4, minmax(0, 1fr));
-        gap:22px;
-      }
-
-      .product-body{
-        padding:18px;
-      }
-
-      .product-title{
-        font-size:20px;
-        min-height:50px;
-      }
-
-      .product-ref{
-        font-size:14px;
-      }
-
-      .product-price{
-        font-size:28px;
-      }
-
-      .product-desc{
-        font-size:14px;
-        min-height:64px;
-      }
-
-      .btn-product{
-        font-size:14px;
-        padding:12px 14px;
-      }
     }
 
     @media (max-width: 640px){
@@ -640,6 +668,10 @@
         font-size:11px;
         line-height:1.35;
         padding:10px 12px;
+      }
+
+      header{
+        position:relative;
       }
 
       .navbar{
@@ -721,6 +753,10 @@
         width:100%;
         font-size:14px;
         padding:8px 0;
+      }
+
+      .main-nav a::after{
+        display:none;
       }
 
       .menu-toggle:checked ~ .nav-bottom .main-nav{
@@ -822,7 +858,35 @@
       }
 
       .products-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
         gap:12px;
+      }
+
+      .product-body{
+        padding:12px;
+      }
+
+      .product-title{
+        font-size:15px;
+        min-height:38px;
+      }
+
+      .product-ref{
+        font-size:12px;
+      }
+
+      .product-price{
+        font-size:20px;
+      }
+
+      .product-desc{
+        font-size:12px;
+        min-height:52px;
+      }
+
+      .btn-product{
+        font-size:12px;
+        padding:11px 12px;
       }
     }
   </style>
@@ -886,7 +950,7 @@
             <line x1="4" y1="18" x2="20" y2="18"></line>
             <circle cx="11" cy="18" r="2"></circle>
           </svg>
-          <span>Filtrar y ordenar</span>
+          <span>Buscar y ordenar</span>
         </button>
 
         <p class="product-counter">
@@ -935,7 +999,7 @@
 
     const productos = [
 
-      { id: 1, foto: 'imagenes/pin1.jpeg', nombre: 'Pin Chef Ratatouille', referencia: '001', precio: 8000, descripcion: 'Ratoncito chef con estilo culinario.', estado: 'disponible' },
+      { id: 1, foto: 'imagenes/pin1.jpeg', nombre: 'Pin Chef Ratatouille', referencia: '001', precio: 8000, descripcion: 'Ratoncito chef con estilo culinario.', estado: 'agotado' },
       { id: 2, foto: 'imagenes/pin2.jpeg', nombre: 'Pin Gatos Mágicos', referencia: '002', precio: 8000, descripcion: 'Gatitos curiosos en un mundo encantado.', estado: 'disponible' },
       { id: 3, foto: 'imagenes/pin3.jpeg', nombre: 'Pin Totoro Clásico', referencia: '003', precio: 8000, descripcion: 'Espíritu del bosque en versión minimalista.', estado: 'disponible' },
       { id: 4, foto: 'imagenes/pin4.jpeg', nombre: 'Pin Totoro Floral', referencia: '004', precio: 8000, descripcion: 'Totoro rodeado de flores delicadas.', estado: 'disponible' },
@@ -966,11 +1030,11 @@
       { id: 29, foto: 'imagenes/pin29.jpeg', nombre: 'Pin Nutria Clásico', referencia: '029', precio: 8000, descripcion: 'Nutria tierna estilo kawaii.', estado: 'disponible' },
       { id: 30, foto: 'imagenes/pin30.jpeg', nombre: 'Pin Snoopy Emotional Support', referencia: '030', precio: 8000, descripcion: 'Diseño divertido de apoyo emocional.', estado: 'disponible' },
       { id: 31, foto: 'imagenes/pin31.jpeg', nombre: 'Pin Snoopy Clásico', referencia: '031', precio: 8000, descripcion: 'El clásico perrito Snoopy.', estado: 'disponible' },
-      { id: 32, foto: 'imagenes/pin32.jpeg', nombre: 'Pin Snoopy Astronauta', referencia: '032', precio: 8000, descripcion: 'Snoopy con uniforme médico.', estado: 'disponible' },
+      { id: 32, foto: 'imagenes/pin32.jpeg', nombre: 'Pin Snoopy Astronauta', referencia: '032', precio: 8000, descripcion: 'Snoopy con uniforme médico.', estado: 'agotado' },
       { id: 33, foto: 'imagenes/pin33.jpeg', nombre: 'Pin Snoopy Feliz', referencia: '033', precio: 8000, descripcion: 'Snoopy en pose relajada.', estado: 'disponible' },
       { id: 34, foto: 'imagenes/pin34.jpeg', nombre: 'Pin Snoopy Helado', referencia: '034', precio: 8000, descripcion: 'Snoopy descansando con estilo.', estado: 'disponible' },
       { id: 35, foto: 'imagenes/pin35.jpeg', nombre: 'Pin Gato Bubble Tea', referencia: '035', precio: 8000, descripcion: 'Gatito disfrutando bebida.', estado: 'disponible' },
-      { id: 36, foto: 'imagenes/pin36.jpeg', nombre: 'Pin Snoopy Café', referencia: '036', precio: 8000, descripcion: 'Snoopy con taza de café.', estado: 'disponible' },
+      { id: 36, foto: 'imagenes/pin36.jpeg', nombre: 'Pin Snoopy Café', referencia: '036', precio: 8000, descripcion: 'Snoopy con taza de café.', estado: 'agotado' },
       { id: 37, foto: 'imagenes/pin37.jpeg', nombre: 'Pin Gato Lector', referencia: '037', precio: 8000, descripcion: 'Gatito leyendo tranquilamente.', estado: 'disponible' },
       { id: 38, foto: 'imagenes/pin38.jpeg', nombre: 'Pin Gato Espejo', referencia: '038', precio: 8000, descripcion: 'Gatito mirándose al espejo.', estado: 'disponible' },
       { id: 39, foto: 'imagenes/pin39.jpeg', nombre: 'Pin Erizo Floral', referencia: '039', precio: 8000, descripcion: 'Erizo con corona de flores.', estado: 'disponible' },
@@ -1007,7 +1071,7 @@
       { id: 70, foto: 'imagenes/pin70.jpeg', nombre: 'Pin Gatito Sentado', referencia: '070', precio: 8000, descripcion: 'Gatito negro elegante.', estado: 'disponible' },
       { id: 71, foto: 'imagenes/pin71.jpeg', nombre: 'Pin Gato Planta', referencia: '071', precio: 8000, descripcion: 'Gatito escondido en planta.', estado: 'disponible' },
       { id: 72, foto: 'imagenes/pin72.jpeg', nombre: 'Pin Gato Cactus', referencia: '072', precio: 8000, descripcion: 'Gatito con cactus decorativo.', estado: 'disponible' },
-      { id: 73, foto: 'imagenes/pin73.jpeg', nombre: 'Pin Planta Gatito', referencia: '073', precio: 8000, descripcion: 'Planta con gato escondido.', estado: 'disponible' },
+      { id: 73, foto: 'imagenes/pin73.jpeg', nombre: 'Pin Planta Gatito', referencia: '073', precio: 8000, descripcion: 'Planta con gato escondido.', estado: 'agotado' },
       { id: 74, foto: 'imagenes/pin74.jpeg', nombre: 'Pin Gato Pecera', referencia: '074', precio: 8000, descripcion: 'Gato mirando peces.', estado: 'disponible' },
       { id: 75, foto: 'imagenes/pin75.jpeg', nombre: 'Pin Botella Gato', referencia: '075', precio: 8000, descripcion: 'Gato dentro de botella.', estado: 'disponible' },
       { id: 76, foto: 'imagenes/pin76.jpeg', nombre: 'Pin Gato Detective', referencia: '076', precio: 8000, descripcion: 'Gato blanco curioso.', estado: 'disponible' },
@@ -1020,7 +1084,7 @@
       { id: 83, foto: 'imagenes/pin83.jpeg', nombre: '---', referencia: '083', precio: 8000, descripcion: 'Diseño listo para agregar imagen.', estado: 'disponible' },
       { id: 84, foto: 'imagenes/pin84.jpeg', nombre: '---', referencia: '084', precio: 8000, descripcion: 'Espacio para nuevo diseño.', estado: 'disponible' },
 
-];
+    ];
 
     const INITIAL_VISIBLE = 8;
     const LOAD_MORE_STEP = 8;
@@ -1054,21 +1118,21 @@
     }
 
     function crearImagen(producto) {
-  return `
-    <img
-      src="${producto.foto}"
-      alt="${producto.nombre} ${producto.referencia}"
-      width="400"
-      height="400"
-      onerror="this.outerHTML=\`
-        <div class='image-placeholder'>
-          <div class='icon'>📌</div>
-          <p>Aquí irá la imagen de tu pin</p>
-        </div>
-      \`"
-    />
-  `;
-}
+      return `
+        <img
+          src="${producto.foto}"
+          alt="${producto.nombre} ${producto.referencia}"
+          width="400"
+          height="400"
+          onerror="this.outerHTML=\`
+            <div class='image-placeholder'>
+              <div class='icon'>📌</div>
+              <p>Aquí irá la imagen de tu pin</p>
+            </div>
+          \`"
+        />
+      `;
+    }
 
     function crearTarjeta(producto) {
       const disponible = producto.estado === 'disponible';
