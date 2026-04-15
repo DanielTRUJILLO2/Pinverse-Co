@@ -25,6 +25,8 @@
       --verde:#1f7a5a;
       --verde-oscuro:#166247;
       --radius:24px;
+      --whatsapp:#25D366;
+      --whatsapp-dark:#1eb95a;
     }
 
     *{
@@ -506,6 +508,118 @@
       font-size:13px;
     }
 
+    .faq-layout{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:28px;
+      align-items:start;
+      position:relative;
+      z-index:1;
+    }
+
+    .faq-intro{
+      padding:8px 4px 0;
+    }
+
+    .faq-kicker{
+      display:inline-block;
+      padding:8px 13px;
+      border-radius:999px;
+      background:rgba(47,120,189,.10);
+      border:1px solid rgba(47,120,189,.12);
+      color:var(--azul-oscuro);
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .faq-intro h2{
+      font-size:48px;
+      line-height:.98;
+      letter-spacing:-1.1px;
+      color:#1c2d40;
+      margin-bottom:14px;
+    }
+
+    .faq-intro p{
+      font-size:16px;
+      line-height:1.7;
+      color:var(--muted-2);
+      max-width:500px;
+    }
+
+    .faq-list{
+      display:grid;
+      gap:14px;
+    }
+
+    .faq-item{
+      background:rgba(255,255,255,.96);
+      border:1px solid rgba(36,79,130,.08);
+      border-radius:20px;
+      box-shadow:var(--shadow-card);
+      overflow:hidden;
+      transition:.22s ease;
+    }
+
+    .faq-item[open]{
+      box-shadow:0 18px 32px rgba(24,39,75,.10);
+      border-color:rgba(47,120,189,.14);
+    }
+
+    .faq-question{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:18px 20px;
+      font-size:20px;
+      font-weight:800;
+      color:#1f3145;
+      transition:.2s ease;
+    }
+
+    .faq-question::-webkit-details-marker{
+      display:none;
+    }
+
+    .faq-question:hover{
+      color:var(--azul);
+    }
+
+    .faq-icon{
+      flex-shrink:0;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      font-weight:700;
+      color:var(--azul-oscuro);
+      background:rgba(47,120,189,.08);
+      transition:.2s ease;
+    }
+
+    .faq-item[open] .faq-icon{
+      transform:rotate(45deg);
+      background:rgba(47,120,189,.14);
+    }
+
+    .faq-answer{
+      padding:0 20px 20px;
+      color:var(--muted-2);
+      font-size:15px;
+      line-height:1.7;
+    }
+
+    .faq-answer p + p{
+      margin-top:10px;
+    }
+
     footer{
       margin-top:30px;
       background:rgba(255,255,255,.88);
@@ -520,9 +634,60 @@
       backdrop-filter: blur(8px);
     }
 
+    .whatsapp-float{
+      position:fixed;
+      left:18px;
+      bottom:18px;
+      z-index:999;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      background:#fff;
+      border-radius:999px;
+      padding:10px 16px 10px 10px;
+      box-shadow:0 12px 28px rgba(16,24,40,.18);
+      border:1px solid rgba(36,79,130,.08);
+      transition:.22s ease;
+    }
+
+    .whatsapp-float:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 32px rgba(16,24,40,.22);
+    }
+
+    .whatsapp-icon{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      background:var(--whatsapp);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      box-shadow:0 8px 18px rgba(37,211,102,.22);
+    }
+
+    .whatsapp-icon svg{
+      width:24px;
+      height:24px;
+      fill:#fff;
+    }
+
+    .whatsapp-text{
+      font-size:14px;
+      font-weight:800;
+      color:#2c2c2c;
+      white-space:nowrap;
+    }
+
     @media (max-width:1199px){
       .hero h1{
         font-size:56px;
+      }
+
+      .faq-intro h2{
+        font-size:42px;
       }
     }
 
@@ -573,6 +738,19 @@
 
       .section-head h2{
         font-size:32px;
+      }
+
+      .faq-layout{
+        grid-template-columns:1fr;
+        gap:18px;
+      }
+
+      .faq-intro h2{
+        font-size:38px;
+      }
+
+      .faq-question{
+        font-size:18px;
       }
     }
 
@@ -784,6 +962,75 @@
         font-size:12px;
       }
 
+      .faq-layout{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      .faq-intro{
+        padding:0;
+      }
+
+      .faq-kicker{
+        font-size:11px;
+        padding:7px 11px;
+        margin-bottom:12px;
+      }
+
+      .faq-intro h2{
+        font-size:32px;
+        line-height:1;
+        margin-bottom:10px;
+      }
+
+      .faq-intro p{
+        font-size:14px;
+        line-height:1.6;
+      }
+
+      .faq-list{
+        gap:12px;
+      }
+
+      .faq-item{
+        border-radius:18px;
+      }
+
+      .faq-question{
+        padding:16px 16px;
+        font-size:17px;
+        align-items:flex-start;
+      }
+
+      .faq-icon{
+        width:30px;
+        height:30px;
+        font-size:20px;
+        margin-top:2px;
+      }
+
+      .faq-answer{
+        padding:0 16px 16px;
+        font-size:14px;
+        line-height:1.6;
+      }
+
+      .whatsapp-float{
+        left:14px;
+        bottom:14px;
+        padding:8px 14px 8px 8px;
+        gap:8px;
+      }
+
+      .whatsapp-icon{
+        width:42px;
+        height:42px;
+      }
+
+      .whatsapp-text{
+        font-size:13px;
+      }
+
       footer{
         margin:18px 14px 0;
         padding:18px;
@@ -853,7 +1100,7 @@
           <article class="novedad-card">
             <div class="novedad-image">
               <span class="novedad-badge">Nuevo</span>
-              <img src="imagenes/pin1-nuevo.jpeg" alt="Pin nuevo 1" onerror="this.style.display='none'; this.parentElement.innerHTML += '';">
+              <img src="imagenes/pin1-nuevo.jpeg" alt="Pin nuevo 1">
             </div>
             <div class="novedad-body">
               <h3 class="novedad-title">Pin nuevo 1</h3>
@@ -867,7 +1114,7 @@
           <article class="novedad-card">
             <div class="novedad-image">
               <span class="novedad-badge">Nuevo</span>
-              <img src="imagenes/pin2-nuevo.jpeg" alt="Pin nuevo 2" onerror="this.style.display='none'; this.parentElement.innerHTML += '';">
+              <img src="imagenes/pin2-nuevo.jpeg" alt="Pin nuevo 2">
             </div>
             <div class="novedad-body">
               <h3 class="novedad-title">Pin nuevo 2</h3>
@@ -881,7 +1128,7 @@
           <article class="novedad-card">
             <div class="novedad-image">
               <span class="novedad-badge">Nuevo</span>
-              <img src="imagenes/pin3-nuevo.jpeg" alt="Pin nuevo 3" onerror="this.style.display='none'; this.parentElement.innerHTML += '';">
+              <img src="imagenes/pin3-nuevo.jpeg" alt="Pin nuevo 3">
             </div>
             <div class="novedad-body">
               <h3 class="novedad-title">Pin nuevo 3</h3>
@@ -895,7 +1142,7 @@
           <article class="novedad-card">
             <div class="novedad-image">
               <span class="novedad-badge">Nuevo</span>
-              <img src="imagenes/pin4-nuevo.jpeg" alt="Pin nuevo 4" onerror="this.style.display='none'; this.parentElement.innerHTML += '';">
+              <img src="imagenes/pin4-nuevo.jpeg" alt="Pin nuevo 4">
             </div>
             <div class="novedad-body">
               <h3 class="novedad-title">Pin nuevo 4</h3>
@@ -911,10 +1158,98 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="faq-layout">
+        <div class="faq-intro">
+          <span class="faq-kicker">Preguntas frecuentes</span>
+          <h2>Resolvemos tus dudas antes de comprar</h2>
+          <p>Aquí puedes revisar información importante sobre pedidos, materiales, empaque y promociones. Así la experiencia se siente más clara, más cómoda y mucho más confiable para el cliente.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-question">
+              <span>¿Los pines incluyen empaque?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Sí, cada pin incluye su bolsita de empaque para que llegue protegido y listo para usar o regalar.</p>
+              <p>Es un detalle simple, pero hace que todo se vea mucho más bonito.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿De qué material son?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Son pines metálicos, lo que les da mayor calidad, durabilidad y un acabado mucho más bonito.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Puedo mezclar diseños?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Sí, puedes elegir diferentes referencias en un mismo pedido sin problema.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Cómo hago mi pedido?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Solo escríbenos por WhatsApp con los pines que quieres y te ayudamos con todo el proceso.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Hay promociones?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Sí, manejamos promociones dependiendo de la cantidad que compres.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Puedo preguntar antes de comprar?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Claro, puedes escribirnos sin compromiso y resolver cualquier duda.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <footer>
       © 2026 Pin Lab Co. · Cali, Colombia
     </footer>
   </div>
+
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/573116821619?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20pines%20de%20Pin%20Lab%20Co."
+    target="_blank"
+    aria-label="Escríbenos por WhatsApp"
+  >
+    <span class="whatsapp-icon">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M19.11 17.23c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.31.2-.58.07-.27-.14-1.13-.42-2.15-1.34-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.41.12-.54.12-.12.27-.31.41-.47.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.14-.61-1.47-.84-2.01-.22-.53-.44-.46-.61-.47h-.52c-.18 0-.47.07-.72.34-.25.27-.95.93-.95 2.27s.97 2.63 1.11 2.81c.14.18 1.9 2.9 4.61 4.07.64.28 1.15.44 1.54.56.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.31z"/>
+        <path d="M16.03 3.2c-7.06 0-12.79 5.73-12.79 12.79 0 2.26.59 4.46 1.72 6.39L3.2 28.8l6.58-1.73a12.75 12.75 0 0 0 6.25 1.6h.01c7.05 0 12.79-5.73 12.79-12.79S23.09 3.2 16.03 3.2zm0 23.31h-.01a10.5 10.5 0 0 1-5.35-1.47l-.38-.22-3.9 1.02 1.04-3.8-.25-.39a10.46 10.46 0 0 1-1.62-5.58c0-5.8 4.72-10.52 10.53-10.52 2.81 0 5.45 1.09 7.43 3.08a10.45 10.45 0 0 1 3.08 7.43c0 5.81-4.72 10.53-10.52 10.53z"/>
+      </svg>
+    </span>
+    <span class="whatsapp-text">Escríbenos</span>
+  </a>
 
   <script>
     const topStripMessages = document.querySelectorAll('.top-strip-message');
@@ -928,6 +1263,18 @@
     }
 
     setInterval(rotateTopStripMessages, 3000);
+
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          faqItems.forEach(other => {
+            if (other !== item) other.removeAttribute('open');
+          });
+        }
+      });
+    });
   </script>
 </body>
 </html>
