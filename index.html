@@ -218,7 +218,6 @@
 
     .hero{
       margin-top:24px;
-      border-radius:34px;
       overflow:hidden;
       min-height:540px;
       box-shadow:var(--shadow);
@@ -230,6 +229,9 @@
       align-items:flex-end;
       position:relative;
       isolation:isolate;
+      border-radius:0;
+      margin-left:-18px;
+      margin-right:-18px;
     }
 
     .hero::before{
@@ -327,13 +329,15 @@
     .section{
       margin-top:26px;
       background:rgba(255,255,255,.82);
-      border-radius:26px;
-      padding:30px;
       box-shadow:var(--shadow-soft);
       border:1px solid rgba(36,79,130,.08);
       backdrop-filter: blur(8px);
       position:relative;
       overflow:hidden;
+      border-radius:0;
+      margin-left:-18px;
+      margin-right:-18px;
+      padding:34px 36px;
     }
 
     .section::before{
@@ -511,7 +515,7 @@
     .categories-grid{
       display:grid;
       grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:16px;
+      gap:18px;
       position:relative;
       z-index:1;
     }
@@ -519,36 +523,51 @@
     .category-card{
       text-decoration:none;
       color:inherit;
-      background:rgba(255,255,255,.96);
-      border:1px solid rgba(36,79,130,.08);
-      border-radius:22px;
-      padding:20px;
-      min-height:130px;
+      min-height:220px;
+      border-radius:24px;
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
       box-shadow:var(--shadow-card);
       transition:.25s ease;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .category-card::before{
-      content:"";
-      position:absolute;
-      top:-30px;
-      right:-30px;
-      width:100px;
-      height:100px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(47,120,189,.12), transparent 70%);
-      pointer-events:none;
+      border:1px solid rgba(36,79,130,.10);
+      background:#dfe7ef;
     }
 
     .category-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 18px 32px rgba(24,39,75,.10);
-      border-color:rgba(47,120,189,.18);
+      transform:translateY(-5px);
+      box-shadow:0 18px 32px rgba(24,39,75,.12);
+    }
+
+    .category-bg{
+      position:absolute;
+      inset:0;
+      background-size:cover;
+      background-position:center;
+      transform:scale(1.03);
+      filter:blur(0px);
+    }
+
+    .category-bg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(17,26,39,.12) 0%, rgba(17,26,39,.28) 45%, rgba(17,26,39,.64) 100%);
+    }
+
+    .category-card:hover .category-bg{
+      transform:scale(1.06);
+    }
+
+    .category-content{
+      position:relative;
+      z-index:1;
+      width:100%;
+      padding:18px;
+      color:#fff;
+      backdrop-filter:blur(2px);
     }
 
     .category-chip{
@@ -556,31 +575,36 @@
       width:max-content;
       padding:7px 11px;
       border-radius:999px;
-      background:rgba(47,120,189,.10);
-      color:var(--azul-oscuro);
-      border:1px solid rgba(47,120,189,.12);
+      background:rgba(255,255,255,.18);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.20);
       font-size:11px;
       font-weight:800;
-      position:relative;
-      z-index:1;
+      margin-bottom:12px;
     }
 
     .category-card h3{
-      font-size:22px;
-      color:#1f3145;
-      margin-top:12px;
-      position:relative;
-      z-index:1;
+      font-size:26px;
+      margin-bottom:8px;
+      line-height:1.08;
+      text-shadow:0 4px 12px rgba(0,0,0,.18);
     }
 
     .category-card p{
       font-size:13px;
-      color:var(--muted-2);
       line-height:1.5;
-      margin-top:8px;
-      position:relative;
-      z-index:1;
+      color:rgba(255,255,255,.90);
+      max-width:95%;
     }
+
+    .category-gatos .category-bg{ background-image:url("imagenes/imagen-categoria-gatos.jpg"); }
+    .category-medicina .category-bg{ background-image:url("imagenes/imagen-categoria-medicina.jpg"); }
+    .category-marvel .category-bg{ background-image:url("imagenes/imagen-categoria-marvel.jpg"); }
+    .category-animales .category-bg{ background-image:url("imagenes/imagen-categoria-animales.jpg"); }
+    .category-perros .category-bg{ background-image:url("imagenes/imagen-categoria-perros.jpg"); }
+    .category-anime .category-bg{ background-image:url("imagenes/imagen-categoria-anime.jpg"); }
+    .category-caricaturas .category-bg{ background-image:url("imagenes/imagen-categoria-caricaturas.jpg"); }
+    .category-videojuegos .category-bg{ background-image:url("imagenes/imagen-categoria-videojuegos.jpg"); }
 
     .faq-layout{
       display:grid;
@@ -722,15 +746,16 @@
     footer{
       margin-top:30px;
       background:rgba(255,255,255,.88);
-      border-radius:22px;
-      padding:22px;
-      text-align:center;
-      color:var(--muted);
-      box-shadow:var(--shadow-soft);
       border:1px solid rgba(36,79,130,.08);
       font-size:13px;
       line-height:1.5;
       backdrop-filter: blur(8px);
+      text-align:center;
+      color:var(--muted);
+      padding:22px;
+      border-radius:0;
+      margin-left:-18px;
+      margin-right:-18px;
     }
 
     .whatsapp-float{
@@ -837,6 +862,15 @@
 
       .section{
         padding:24px;
+        margin-left:0;
+        margin-right:0;
+        border-radius:24px;
+      }
+
+      .hero{
+        margin-left:0;
+        margin-right:0;
+        border-radius:28px;
       }
 
       .section-head h2{
@@ -862,6 +896,12 @@
 
       .faq-image{
         min-height:260px;
+      }
+
+      footer{
+        margin-left:0;
+        margin-right:0;
+        border-radius:20px;
       }
     }
 
@@ -1075,9 +1115,12 @@
       }
 
       .category-card{
-        padding:16px;
-        min-height:118px;
+        min-height:165px;
         border-radius:18px;
+      }
+
+      .category-content{
+        padding:14px;
       }
 
       .category-card h3{
@@ -1310,52 +1353,76 @@
       </div>
 
       <div class="categories-grid">
-        <a class="category-card" href="catalogo.html?categoria=gatos">
-          <span class="category-chip">Cute</span>
-          <h3>Gatos</h3>
-          <p>Pines de michis, gatos tiernos, graciosos y coleccionables.</p>
+        <a class="category-card category-gatos" href="catalogo.html?categoria=gatos">
+          <div class="category-bg"></div>
+          <div class="category-content">
+            <span class="category-chip">Cute</span>
+            <h3>Gatos</h3>
+            <p>Pines de michis, gatos tiernos, graciosos y coleccionables.</p>
+          </div>
         </a>
 
-        <a class="category-card" href="catalogo.html?categoria=medicina">
-          <span class="category-chip">Temática</span>
-          <h3>Medicina</h3>
-          <p>Diseños relacionados con salud, doctores, enfermería y hospital.</p>
+        <a class="category-card category-medicina" href="catalogo.html?categoria=medicina">
+          <div class="category-bg"></div>
+          <div class="category-content">
+            <span class="category-chip">Temática</span>
+            <h3>Medicina</h3>
+            <p>Diseños relacionados con salud, doctores, enfermería y hospital.</p>
+          </div>
         </a>
 
-        <a class="category-card" href="catalogo.html?categoria=marvel">
-          <span class="category-chip">Fans</span>
-          <h3>Marvel</h3>
-          <p>Personajes y referencias inspiradas en superhéroes y universo Marvel.</p>
+        <a class="category-card category-marvel" href="catalogo.html?categoria=marvel">
+          <div class="category-bg"></div>
+          <div class="category-content">
+            <span class="category-chip">Fans</span>
+            <h3>Marvel</h3>
+            <p>Personajes y referencias inspiradas en superhéroes y universo Marvel.</p>
+          </div>
         </a>
 
-        <a class="category-card" href="catalogo.html?categoria=animales">
-          <span class="category-chip">Favoritos</span>
-          <h3>Animales</h3>
-          <p>Capybaras, nutrias, ranitas, koalas y más diseños adorables.</p>
+        <a class="category-card category-animales" href="catalogo.html?categoria=animales">
+          <div class="category-bg"></div>
+          <div class="category-content">
+            <span class="category-chip">Favoritos</span>
+            <h3>Animales</h3>
+            <p>Capybaras, nutrias, ranitas, koalas y más diseños adorables.</p>
+          </div>
         </a>
 
-        <a class="category-card" href="catalogo.html?categoria=perros">
-          <span class="category-chip">Cute</span>
-          <h3>Perros</h3>
-          <p>Pines de perritos con mucho estilo y personalidad.</p>
+        <a class="category-card category-perros" href="catalogo.html?categoria=perros">
+          <div class="category-bg"></div>
+          <div class="category-content">
+            <span class="category-chip">Cute</span>
+            <h3>Perros</h3>
+            <p>Pines de perritos con mucho estilo y personalidad.</p>
+          </div>
         </a>
 
-        <a class="category-card" href="catalogo.html?categoria=anime">
-          <span class="category-chip">Otaku</span>
-          <h3>Anime</h3>
-          <p>Referencias de personajes y estilos para fans del anime.</p>
+        <a class="category-card category-anime" href="catalogo.html?categoria=anime">
+          <div class="category-bg"></div>
+          <div class="category-content">
+            <span class="category-chip">Otaku</span>
+            <h3>Anime</h3>
+            <p>Referencias de personajes y estilos para fans del anime.</p>
+          </div>
         </a>
 
-        <a class="category-card" href="catalogo.html?categoria=caricaturas">
-          <span class="category-chip">Clásicos</span>
-          <h3>Caricaturas</h3>
-          <p>Snoopy, Up, Gravity Falls y otros personajes animados queridos.</p>
+        <a class="category-card category-caricaturas" href="catalogo.html?categoria=caricaturas">
+          <div class="category-bg"></div>
+          <div class="category-content">
+            <span class="category-chip">Clásicos</span>
+            <h3>Caricaturas</h3>
+            <p>Snoopy, Up, Gravity Falls y otros personajes animados queridos.</p>
+          </div>
         </a>
 
-        <a class="category-card" href="catalogo.html?categoria=videojuegos">
-          <span class="category-chip">Geek</span>
-          <h3>Videojuegos</h3>
-          <p>Diseños inspirados en mundos, personajes y cultura gamer.</p>
+        <a class="category-card category-videojuegos" href="catalogo.html?categoria=videojuegos">
+          <div class="category-bg"></div>
+          <div class="category-content">
+            <span class="category-chip">Geek</span>
+            <h3>Videojuegos</h3>
+            <p>Diseños inspirados en mundos, personajes y cultura gamer.</p>
+          </div>
         </a>
       </div>
     </section>
@@ -1474,7 +1541,6 @@
     setInterval(rotateTopStripMessages, 3000);
 
     const faqItems = document.querySelectorAll('.faq-item');
-
     faqItems.forEach(item => {
       item.addEventListener('toggle', () => {
         if (item.open) {
