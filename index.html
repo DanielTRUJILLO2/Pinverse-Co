@@ -16,7 +16,7 @@
       --muted:#6d6d6d;
       --muted-2:#718096;
       --bg:#f6f3ee;
-      --card:rgba(255,255,255,.84);
+      --card:rgba(255,255,255,.88);
       --line:#e8e8e8;
       --line-blue:rgba(36,79,130,.10);
       --shadow:0 18px 40px rgba(22,34,57,.10);
@@ -220,10 +220,10 @@
       margin-top:24px;
       border-radius:34px;
       overflow:hidden;
-      min-height:560px;
+      min-height:540px;
       box-shadow:var(--shadow);
       background:
-        linear-gradient(90deg, rgba(13,20,33,.66) 0%, rgba(13,20,33,.40) 38%, rgba(13,20,33,.20) 68%, rgba(13,20,33,.12) 100%),
+        linear-gradient(90deg, rgba(13,20,33,.68) 0%, rgba(13,20,33,.42) 38%, rgba(13,20,33,.20) 68%, rgba(13,20,33,.12) 100%),
         linear-gradient(180deg, rgba(18,28,42,.08) 0%, rgba(18,28,42,.30) 58%, rgba(18,28,42,.54) 100%),
         url("imagenes/banner-principal.jpg") center/cover no-repeat;
       display:flex;
@@ -286,7 +286,6 @@
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin-bottom:24px;
     }
 
     .btn{
@@ -325,86 +324,6 @@
       transform:translateY(-2px);
     }
 
-    .hero-stats{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:12px;
-      max-width:650px;
-    }
-
-    .hero-stat{
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.15);
-      backdrop-filter:blur(10px);
-      border-radius:18px;
-      padding:14px 16px;
-      box-shadow:0 10px 20px rgba(0,0,0,.10);
-    }
-
-    .hero-stat strong{
-      display:block;
-      font-size:18px;
-      margin-bottom:4px;
-      color:#fff;
-      letter-spacing:.2px;
-    }
-
-    .hero-stat span{
-      display:block;
-      font-size:13px;
-      line-height:1.45;
-      color:rgba(255,255,255,.88);
-    }
-
-    .benefits{
-      margin-top:20px;
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:16px;
-    }
-
-    .benefit-card{
-      background:rgba(255,255,255,.80);
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(36,79,130,.08);
-      border-radius:22px;
-      padding:18px;
-      box-shadow:var(--shadow-soft);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .benefit-card::before{
-      content:"";
-      position:absolute;
-      top:-35px;
-      right:-35px;
-      width:100px;
-      height:100px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(47,120,189,.10), transparent 70%);
-      pointer-events:none;
-    }
-
-    .benefit-card strong{
-      display:block;
-      font-size:15px;
-      color:var(--texto-fuerte);
-      margin-bottom:6px;
-      letter-spacing:.2px;
-      position:relative;
-      z-index:1;
-    }
-
-    .benefit-card span{
-      display:block;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.55;
-      position:relative;
-      z-index:1;
-    }
-
     .section{
       margin-top:26px;
       background:rgba(255,255,255,.82);
@@ -435,7 +354,7 @@
       justify-content:space-between;
       gap:14px;
       flex-wrap:wrap;
-      margin-bottom:24px;
+      margin-bottom:22px;
       position:relative;
       z-index:1;
     }
@@ -452,80 +371,139 @@
       font-size:14px;
     }
 
-    .categories{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:18px;
+    .novedades-wrap{
       position:relative;
       z-index:1;
     }
 
-    .cat-card{
-      text-decoration:none;
-      color:inherit;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.96), rgba(244,239,233,.90));
+    .novedades-scroll{
+      display:flex;
+      gap:16px;
+      overflow-x:auto;
+      padding-bottom:8px;
+      scroll-snap-type:x mandatory;
+      scrollbar-width:thin;
+      scrollbar-color:rgba(47,120,189,.35) transparent;
+    }
+
+    .novedades-scroll::-webkit-scrollbar{
+      height:8px;
+    }
+
+    .novedades-scroll::-webkit-scrollbar-track{
+      background:transparent;
+    }
+
+    .novedades-scroll::-webkit-scrollbar-thumb{
+      background:rgba(47,120,189,.35);
+      border-radius:999px;
+    }
+
+    .novedad-card{
+      min-width:280px;
+      max-width:280px;
+      background:rgba(255,255,255,.96);
       border:1px solid rgba(36,79,130,.08);
       border-radius:24px;
-      padding:22px;
-      min-height:174px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      transition:.25s ease;
+      overflow:hidden;
       box-shadow:var(--shadow-card);
+      scroll-snap-align:start;
+      flex-shrink:0;
+      transition:.25s ease;
+    }
+
+    .novedad-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 32px rgba(24,39,75,.10);
+    }
+
+    .novedad-image{
       position:relative;
+      aspect-ratio:1/1;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.82), rgba(239,235,228,.98)),
+        url("imagenes/textura.jpg") center/cover no-repeat;
       overflow:hidden;
     }
 
-    .cat-card::before{
-      content:"";
+    .novedad-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .novedad-badge{
       position:absolute;
-      top:-40px;
-      right:-40px;
-      width:120px;
-      height:120px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(47,120,189,.12), transparent 70%);
-      pointer-events:none;
-    }
-
-    .cat-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 18px 32px rgba(24,39,75,.10);
-      border-color:rgba(47,120,189,.18);
-    }
-
-    .cat-chip{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:max-content;
-      padding:7px 12px;
+      top:12px;
+      left:12px;
+      padding:7px 11px;
       border-radius:999px;
-      font-size:12px;
+      background:rgba(17,17,17,.85);
+      color:#fff;
+      font-size:11px;
       font-weight:800;
-      color:var(--azul-oscuro);
-      background:rgba(47,120,189,.10);
-      border:1px solid rgba(47,120,189,.12);
-      position:relative;
-      z-index:1;
+      z-index:2;
+      box-shadow:0 6px 12px rgba(0,0,0,.12);
     }
 
-    .cat-card strong{
-      font-size:24px;
-      line-height:1.12;
+    .novedad-body{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .novedad-title{
+      font-size:18px;
+      font-weight:800;
       color:#213348;
-      position:relative;
-      z-index:1;
+      line-height:1.2;
     }
 
-    .cat-card span:last-child{
+    .novedad-ref{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .novedad-price{
+      font-size:24px;
+      font-weight:800;
+      color:#1e2a36;
+      line-height:1;
+    }
+
+    .novedad-desc{
+      font-size:14px;
       color:var(--muted-2);
       line-height:1.55;
+      min-height:44px;
+    }
+
+    .novedad-btn{
+      margin-top:6px;
+      width:100%;
+      text-align:center;
+      text-decoration:none;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:800;
       font-size:14px;
-      position:relative;
-      z-index:1;
+      background:#25D366;
+      color:#fff;
+      box-shadow:0 8px 16px rgba(37,211,102,.18);
+      transition:.2s ease;
+    }
+
+    .novedad-btn:hover{
+      background:#1eb95a;
+      transform:translateY(-1px);
+    }
+
+    .slider-hint{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
     }
 
     footer{
@@ -589,25 +567,12 @@
         font-size:16px;
       }
 
-      .hero-stats{
-        grid-template-columns:1fr 1fr 1fr;
-      }
-
-      .benefits{
-        grid-template-columns:1fr;
-      }
-
       .section{
         padding:24px;
       }
 
       .section-head h2{
         font-size:32px;
-      }
-
-      .categories{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-        gap:16px;
       }
     }
 
@@ -713,10 +678,10 @@
 
       .hero{
         margin-top:12px;
-        min-height:420px;
+        min-height:430px;
         border-radius:0;
-        background-position:center;
         box-shadow:none;
+        background-position:center;
       }
 
       .hero::before{
@@ -763,37 +728,6 @@
         border-radius:14px;
       }
 
-      .hero-stats{
-        grid-template-columns:1fr;
-        gap:10px;
-        max-width:none;
-      }
-
-      .hero-stat{
-        border-radius:16px;
-        padding:13px 14px;
-      }
-
-      .hero-stat strong{
-        font-size:16px;
-      }
-
-      .hero-stat span{
-        font-size:12px;
-      }
-
-      .benefits{
-        margin-top:14px;
-        grid-template-columns:1fr;
-        gap:12px;
-        padding:0 14px;
-      }
-
-      .benefit-card{
-        padding:16px;
-        border-radius:18px;
-      }
-
       .section{
         margin-top:16px;
         padding:20px 14px;
@@ -814,28 +748,40 @@
         font-size:13px;
       }
 
-      .categories{
-        grid-template-columns:1fr 1fr;
+      .novedades-scroll{
         gap:12px;
+        padding-bottom:6px;
       }
 
-      .cat-card{
-        min-height:134px;
-        padding:16px;
-        border-radius:18px;
+      .novedad-card{
+        min-width:240px;
+        max-width:240px;
+        border-radius:20px;
       }
 
-      .cat-chip{
-        font-size:11px;
-        padding:6px 10px;
+      .novedad-body{
+        padding:14px;
       }
 
-      .cat-card strong{
-        font-size:18px;
+      .novedad-title{
+        font-size:16px;
       }
 
-      .cat-card span:last-child{
+      .novedad-ref{
+        font-size:12px;
+      }
+
+      .novedad-price{
+        font-size:20px;
+      }
+
+      .novedad-desc{
         font-size:13px;
+        min-height:40px;
+      }
+
+      .slider-hint{
+        font-size:12px;
       }
 
       footer{
@@ -893,85 +839,75 @@
           <a class="btn btn-primary" href="catalogo.html">Ver catálogo</a>
           <a class="btn btn-light" href="https://wa.me/573116821619?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20pines%20de%20Pin%20Lab%20Co." target="_blank">Comprar por WhatsApp</a>
         </div>
-
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <strong>Bolsita incluida</strong>
-            <span>Cada pin llega con una presentación bonita y cuidada.</span>
-          </div>
-
-          <div class="hero-stat">
-            <strong>Compra surtida</strong>
-            <span>Mezcla varias referencias en un solo pedido.</span>
-          </div>
-
-          <div class="hero-stat">
-            <strong>Atención rápida</strong>
-            <span>Te ayudamos por WhatsApp con disponibilidad y pedido.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="benefits">
-      <div class="benefit-card">
-        <strong>Detalles bonitos</strong>
-        <span>Pines pensados para coleccionar, usar en bolsos o regalar con estilo.</span>
-      </div>
-
-      <div class="benefit-card">
-        <strong>Diseños variados</strong>
-        <span>Encuentra referencias cute, geek, anime, caricaturas y mucho más.</span>
-      </div>
-
-      <div class="benefit-card">
-        <strong>Compra fácil</strong>
-        <span>Solo eliges tus favoritos y nos escribes para ayudarte con todo.</span>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
-        <h2>Categorías favoritas</h2>
-        <p>Explora por estilo o temática</p>
+        <h2>Novedades</h2>
+        <p>Desliza para ver los pines nuevos</p>
       </div>
 
-      <div class="categories">
-        <a class="cat-card" href="catalogo.html">
-          <span class="cat-chip">Clásicos</span>
-          <strong>Snoopy</strong>
-          <span>Diseños tiernos, icónicos y muy coleccionables.</span>
-        </a>
+      <div class="novedades-wrap">
+        <div class="novedades-scroll">
+          <article class="novedad-card">
+            <div class="novedad-image">
+              <span class="novedad-badge">Nuevo</span>
+              <img src="imagenes/pin1-nuevo.jpeg" alt="Pin nuevo 1" onerror="this.style.display='none'; this.parentElement.innerHTML += '';">
+            </div>
+            <div class="novedad-body">
+              <h3 class="novedad-title">Pin nuevo 1</h3>
+              <p class="novedad-ref">Ref: N-001</p>
+              <div class="novedad-price">$8.000 COP</div>
+              <p class="novedad-desc">Aquí irá la descripción corta de tu pin nuevo.</p>
+              <a class="novedad-btn" href="https://wa.me/573116821619?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20el%20Pin%20nuevo%201%20Ref%20N-001" target="_blank">Pedir por WhatsApp</a>
+            </div>
+          </article>
 
-        <a class="cat-card" href="catalogo.html">
-          <span class="cat-chip">Favoritos</span>
-          <strong>Gatos</strong>
-          <span>Perfectos para amantes de los michis y diseños cute.</span>
-        </a>
+          <article class="novedad-card">
+            <div class="novedad-image">
+              <span class="novedad-badge">Nuevo</span>
+              <img src="imagenes/pin2-nuevo.jpeg" alt="Pin nuevo 2" onerror="this.style.display='none'; this.parentElement.innerHTML += '';">
+            </div>
+            <div class="novedad-body">
+              <h3 class="novedad-title">Pin nuevo 2</h3>
+              <p class="novedad-ref">Ref: N-002</p>
+              <div class="novedad-price">$8.000 COP</div>
+              <p class="novedad-desc">Aquí irá la descripción corta de tu pin nuevo.</p>
+              <a class="novedad-btn" href="https://wa.me/573116821619?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20el%20Pin%20nuevo%202%20Ref%20N-002" target="_blank">Pedir por WhatsApp</a>
+            </div>
+          </article>
 
-        <a class="cat-card" href="catalogo.html">
-          <span class="cat-chip">Cute</span>
-          <strong>Perros</strong>
-          <span>Detalles adorables con mucha personalidad.</span>
-        </a>
+          <article class="novedad-card">
+            <div class="novedad-image">
+              <span class="novedad-badge">Nuevo</span>
+              <img src="imagenes/pin3-nuevo.jpeg" alt="Pin nuevo 3" onerror="this.style.display='none'; this.parentElement.innerHTML += '';">
+            </div>
+            <div class="novedad-body">
+              <h3 class="novedad-title">Pin nuevo 3</h3>
+              <p class="novedad-ref">Ref: N-003</p>
+              <div class="novedad-price">$8.000 COP</div>
+              <p class="novedad-desc">Aquí irá la descripción corta de tu pin nuevo.</p>
+              <a class="novedad-btn" href="https://wa.me/573116821619?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20el%20Pin%20nuevo%203%20Ref%20N-003" target="_blank">Pedir por WhatsApp</a>
+            </div>
+          </article>
 
-        <a class="cat-card" href="catalogo.html">
-          <span class="cat-chip">Top ventas</span>
-          <strong>Capybaras</strong>
-          <span>Una colección divertida, tierna y diferente.</span>
-        </a>
+          <article class="novedad-card">
+            <div class="novedad-image">
+              <span class="novedad-badge">Nuevo</span>
+              <img src="imagenes/pin4-nuevo.jpeg" alt="Pin nuevo 4" onerror="this.style.display='none'; this.parentElement.innerHTML += '';">
+            </div>
+            <div class="novedad-body">
+              <h3 class="novedad-title">Pin nuevo 4</h3>
+              <p class="novedad-ref">Ref: N-004</p>
+              <div class="novedad-price">$8.000 COP</div>
+              <p class="novedad-desc">Aquí irá la descripción corta de tu pin nuevo.</p>
+              <a class="novedad-btn" href="https://wa.me/573116821619?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20el%20Pin%20nuevo%204%20Ref%20N-004" target="_blank">Pedir por WhatsApp</a>
+            </div>
+          </article>
+        </div>
 
-        <a class="cat-card" href="catalogo.html">
-          <span class="cat-chip">Fans</span>
-          <strong>Anime</strong>
-          <span>Referencias para quienes aman sus personajes favoritos.</span>
-        </a>
-
-        <a class="cat-card" href="catalogo.html">
-          <span class="cat-chip">Geek</span>
-          <strong>Videojuegos</strong>
-          <span>Diseños inspirados en mundos y personajes icónicos.</span>
-        </a>
+        <p class="slider-hint">Desliza hacia la derecha para ver más novedades.</p>
       </div>
     </section>
 
