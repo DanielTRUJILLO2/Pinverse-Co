@@ -61,8 +61,8 @@
       backdrop-filter: blur(12px);
       box-shadow:0 10px 24px rgba(20,35,60,.06);
       border-bottom:1px solid rgba(36,79,130,.08);
-      position:static;
-      z-index:20;
+      position:relative;
+      z-index:30;
     }
 
     .navbar{
@@ -74,6 +74,7 @@
       gap:28px;
       padding:14px 24px;
       min-height:110px;
+      position:relative;
     }
 
     .nav-left{
@@ -172,8 +173,20 @@
       width:100%;
     }
 
+    .mobile-overlay{
+      display:none;
+    }
+
+    .mobile-drawer{
+      display:none;
+    }
+
+    .mobile-close{
+      display:none;
+    }
+
     .hero{
-      margin-top: 0;
+      margin-top:0;
       overflow:hidden;
       min-height:560px;
       box-shadow:var(--shadow);
@@ -332,7 +345,7 @@
     }
 
     .section{
-      margin-top:0px;
+      margin-top:0;
       background:rgba(255,255,255,.84);
       box-shadow:var(--shadow-soft);
       border:1px solid rgba(36,79,130,.08);
@@ -493,7 +506,7 @@
     }
 
     .novedad-btn{
-      margin-top:6px;
+      margin-top:0;
       width:100%;
       text-align:center;
       text-decoration:none;
@@ -513,7 +526,7 @@
     }
 
     .slider-hint{
-      margin-top:0px;
+      margin-top:0;
       color:var(--muted);
       font-size:13px;
     }
@@ -746,11 +759,11 @@
     }
 
     .faq-answer p + p{
-      margin-top:0px;
+      margin-top:0;
     }
 
     footer{
-      margin-top:0px;
+      margin-top:0;
       background:rgba(255,255,255,.88);
       border:1px solid rgba(36,79,130,.08);
       font-size:13px;
@@ -933,83 +946,159 @@
         padding:0 0 26px;
       }
 
+      header{
+        overflow:visible;
+      }
+
       .navbar{
-        flex-direction:column;
-        align-items:stretch;
-        justify-content:flex-start;
-        gap:8px;
-        padding:10px 14px 12px;
+        min-height:128px;
+        padding:12px 18px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
       }
 
       .nav-left{
-        position:relative;
         width:100%;
+        min-height:104px;
         display:flex;
-        justify-content:center;
         align-items:center;
+        justify-content:center;
+        position:relative;
       }
 
       .logo-box{
-        width:180px;
-        height:180px;
+        width:138px;
+        height:138px;
         margin:0 auto;
       }
 
       .menu-btn{
         display:flex;
         position:absolute;
-        left:0;
+        left:4px;
         top:50%;
         transform:translateY(-50%);
-        width:42px;
-        height:42px;
+        width:48px;
+        height:48px;
         border:none;
-        border-radius:14px;
+        border-radius:12px;
         background:transparent;
-        font-size:34px;
+        font-size:36px;
+        line-height:1;
         cursor:pointer;
         align-items:center;
         justify-content:center;
-        z-index:3;
-        color:#222;
+        z-index:60;
+        color:#1f1f1f;
         padding:0;
       }
 
       .nav-bottom{
-        display:flex;
-        flex-direction:column;
-        gap:12px;
-        padding:0 14px;
+        display:none;
       }
 
-      .main-nav{
-        display:none;
+      .mobile-overlay{
+        display:block;
+        position:fixed;
+        inset:0;
+        background:rgba(14,20,30,.42);
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        transition:opacity .28s ease, visibility .28s ease;
+        z-index:70;
+      }
+
+      .mobile-drawer{
+        display:flex;
         flex-direction:column;
-        align-items:flex-start;
+        position:fixed;
+        top:0;
+        left:0;
+        width:min(82vw, 320px);
+        height:100dvh;
+        background:rgba(255,255,255,.98);
+        backdrop-filter:blur(10px);
+        box-shadow:18px 0 40px rgba(20,35,60,.18);
+        transform:translateX(-105%);
+        transition:transform .30s ease;
+        z-index:80;
+        padding:22px 18px 24px;
+      }
+
+      .mobile-drawer-head{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:14px;
+        margin-bottom:22px;
+      }
+
+      .mobile-drawer-logo{
+        width:78px;
+        height:78px;
+        object-fit:contain;
+        display:block;
+      }
+
+      .mobile-drawer-logo-link{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        text-decoration:none;
+      }
+
+      .mobile-close{
+        display:flex;
+        width:42px;
+        height:42px;
+        border:none;
+        border-radius:12px;
+        background:#f3f4f6;
+        color:#1f1f1f;
+        font-size:26px;
+        cursor:pointer;
+        align-items:center;
+        justify-content:center;
+      }
+
+      .mobile-drawer-nav{
+        display:flex;
+        flex-direction:column;
         gap:6px;
-        background:#fff;
-        border:1px solid var(--line);
-        border-radius:16px;
-        padding:12px 14px;
-        box-shadow:var(--shadow-soft);
       }
 
-      .main-nav a{
-        width:100%;
-        font-size:14px;
-        padding:8px 0;
+      .mobile-drawer-nav a{
+        text-decoration:none;
+        color:var(--texto-fuerte);
+        font-size:18px;
+        font-weight:800;
+        letter-spacing:.4px;
+        padding:14px 12px;
+        border-radius:14px;
+        transition:.2s ease;
       }
 
-      .main-nav a::after{
-        display:none;
+      .mobile-drawer-nav a:hover,
+      .mobile-drawer-nav a:active{
+        background:rgba(47,120,189,.08);
+        color:var(--azul-oscuro);
       }
 
-      .menu-toggle:checked ~ .nav-bottom .main-nav{
-        display:flex;
+      .menu-toggle:checked ~ .mobile-overlay{
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+      }
+
+      .menu-toggle:checked ~ .mobile-drawer{
+        transform:translateX(0);
       }
 
       .hero{
-        margin-top:0px;
+        margin-top:0;
         min-height:430px;
         border-radius:0;
         box-shadow:none;
@@ -1070,7 +1159,7 @@
       }
 
       .section{
-        margin-top:0px;
+        margin-top:0;
         padding:20px 14px;
         border-radius:0;
         border-left:none;
@@ -1197,7 +1286,7 @@
         width:30px;
         height:30px;
         font-size:20px;
-        margin-top:0px;
+        margin-top:0;
       }
 
       .faq-answer{
@@ -1224,10 +1313,11 @@
       }
 
       footer{
-        margin-top:0px;
+        margin-top:0;
         padding:18px;
         font-size:12px;
       }
+
     }
   </style>
 </head>
@@ -1235,13 +1325,11 @@
   <header>
     <div class="navbar">
       <div class="nav-left">
-        <label for="menu-toggle" class="menu-btn">☰</label>
+        <label for="menu-toggle" class="menu-btn" aria-label="Abrir menú">☰</label>
 
-        <div class="logo-box">
-          <img src="imagenes/logo.png" alt="Logo Pin Lab Co." onerror="this.style.display='none'; this.parentElement.innerHTML='Logo';">
-        </div>
-
-        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <a href="index.html" class="logo-box">
+  <img src="imagenes/logo.png" alt="Logo Pin Lab Co." onerror="this.style.display='none'; this.parentElement.innerHTML='Logo';">
+</a>
 
         <div class="nav-bottom">
           <nav class="main-nav">
@@ -1254,6 +1342,27 @@
       </div>
     </div>
   </header>
+
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+  <label for="menu-toggle" class="mobile-overlay" aria-label="Cerrar menú"></label>
+
+  <aside class="mobile-drawer" aria-label="Menú móvil">
+    <div class="mobile-drawer-head">
+  <a href="index.html" class="mobile-drawer-logo-link">
+    <img src="imagenes/logo.png" alt="Logo Pin Lab Co." class="mobile-drawer-logo">
+  </a>
+
+  <label for="menu-toggle" class="mobile-close" aria-label="Cerrar menú">✕</label>
+</div>
+
+    <nav class="mobile-drawer-nav">
+      <a href="index.html">INICIO</a>
+      <a href="catalogo.html">CATÁLOGO</a>
+      <a href="preguntas.html">PREGUNTAS FRECUENTES</a>
+      <a href="contacto.html">CONTACTO</a>
+    </nav>
+  </aside>
 
   <div class="container">
     <section class="hero">
@@ -1563,6 +1672,15 @@
             if (other !== item) other.removeAttribute('open');
           });
         }
+      });
+    });
+
+    const mobileLinks = document.querySelectorAll('.mobile-drawer-nav a');
+    const menuToggle = document.getElementById('menu-toggle');
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.checked = false;
       });
     });
   </script>
