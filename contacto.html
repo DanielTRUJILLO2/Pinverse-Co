@@ -3,22 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pin Lab Co. - Contacto</title>
+  <title>Pin Lab Co. - Preguntas frecuentes</title>
   <link rel="icon" type="image/png" href="imagenes/favicon.png" />
   <style>
     :root{
       --azul:#2f78bd;
       --azul-oscuro:#244f82;
+      --azul-medio:#3f8ad1;
+      --azul-claro:#eaf3ff;
+      --texto:#1f1f1f;
+      --texto-fuerte:#223247;
+      --muted:#6d6d6d;
+      --muted-2:#718096;
+      --line:#e8e8e8;
+      --line-blue:rgba(36,79,130,.10);
+      --shadow:0 18px 40px rgba(22,34,57,.10);
+      --shadow-soft:0 10px 24px rgba(21,35,60,.06);
+      --shadow-card:0 16px 30px rgba(24,39,75,.08);
       --verde:#1f7a5a;
       --verde-oscuro:#166247;
-      --texto:#1f1f1f;
-      --muted:#6d6d6d;
-      --bg:#f6f3ee;
-      --card:rgba(255,255,255,.94);
-      --line:#e8e8e8;
-      --shadow:0 12px 30px rgba(0,0,0,.08);
-      --shadow-soft:0 8px 18px rgba(0,0,0,.05);
-      --radius:22px;
+      --negro-suave:#24272c;
+      --gris-oscuro:#343942;
     }
 
     *{
@@ -33,103 +38,61 @@
     }
 
     body{
-  background:
-    radial-gradient(circle at 15% 8%, rgba(47,120,189,.10), transparent 22%),
-    radial-gradient(circle at 85% 18%, rgba(47,120,189,.08), transparent 20%),
-    radial-gradient(circle at 50% 100%, rgba(36,79,130,.06), transparent 28%),
-    linear-gradient(180deg, #f8f7f3 0%, #f4f1eb 52%, #f2eee8 100%);
-  color:var(--texto);
-}
+      background:
+        radial-gradient(circle at 12% 8%, rgba(47,120,189,.10), transparent 22%),
+        radial-gradient(circle at 88% 14%, rgba(47,120,189,.08), transparent 20%),
+        radial-gradient(circle at 50% 100%, rgba(36,79,130,.06), transparent 28%),
+        linear-gradient(180deg, #f8f7f3 0%, #f4f1eb 54%, #f2eee8 100%);
+      color:var(--texto);
+      overflow-x:hidden;
+    }
 
     .container{
       width:min(100%, 1400px);
       margin:0 auto;
-      padding:0 18px 30px;
-    }
-
-    .top-strip{
-      background:linear-gradient(135deg, var(--azul), var(--azul-oscuro));
-      color:#fff;
-      position:relative;
-      overflow:hidden;
-      min-height:46px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:0 14px;
-    }
-
-    .top-strip-slider{
-      position:relative;
-      width:100%;
-      max-width:1200px;
-      height:46px;
-    }
-
-    .top-strip-message{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      font-weight:700;
-      font-size:13px;
-      line-height:1.4;
-      letter-spacing:.2px;
-      opacity:0;
-      transform:translateX(30px);
-      transition:opacity .45s ease, transform .45s ease;
-      padding:0 10px;
-    }
-
-    .top-strip-message.active{
-      opacity:1;
-      transform:translateX(0);
+      padding:0 18px 36px;
     }
 
     header{
-      background:rgba(255,255,255,.88);
+      background:rgba(255,255,255,.92);
       backdrop-filter: blur(12px);
       box-shadow:0 10px 24px rgba(20,35,60,.06);
       border-bottom:1px solid rgba(36,79,130,.08);
-      position:static;
+      position:relative;
+      z-index:30;
     }
 
     .navbar{
       width:min(100%, 1400px);
       margin:0 auto;
       display:flex;
-      flex-direction:column;
-      gap:18px;
-      padding:18px;
-    }
-
-    .nav-top{
-      display:flex;
       align-items:center;
-      justify-content:center;
-      gap:18px;
+      justify-content:space-between;
+      gap:28px;
+      padding:14px 24px;
+      min-height:110px;
+      position:relative;
     }
 
     .nav-left{
       display:flex;
       align-items:center;
-      justify-content:center;
-      width:100%;
+      gap:26px;
+      min-width:0;
+      flex:1;
     }
 
     .logo-box{
-      width:200px;
-      height:200px;
+      width:112px;
+      height:112px;
       border:none;
-      border-radius:20px;
       background:transparent;
       display:flex;
       align-items:center;
       justify-content:center;
       overflow:hidden;
       flex-shrink:0;
+      text-decoration:none;
     }
 
     .logo-box img{
@@ -137,10 +100,14 @@
       height:100%;
       object-fit:contain;
       display:block;
+      filter:drop-shadow(0 6px 10px rgba(0,0,0,.06));
+      transition:transform .2s ease;
     }
 
-    .brand{
-      display:none;
+    .logo-box:hover img,
+    .mobile-drawer-logo-link:hover img{
+      transform:scale(1.05);
+      cursor:pointer;
     }
 
     .menu-toggle{
@@ -152,41 +119,40 @@
       width:46px;
       height:46px;
       border:none;
-      border-radius:14px;
       background:#f2f2f2;
       font-size:24px;
       cursor:pointer;
-      flex-shrink:0;
       align-items:center;
       justify-content:center;
       user-select:none;
+      flex-shrink:0;
     }
 
     .nav-bottom{
       display:flex;
       align-items:center;
       justify-content:flex-start;
-      gap:22px;
-      padding-top:4px;
+      flex:1;
+      min-width:0;
     }
 
     .main-nav{
       display:flex;
       align-items:center;
-      justify-content:center;
-      gap:30px;
+      justify-content:flex-start;
+      gap:34px;
       flex-wrap:wrap;
       width:100%;
     }
 
     .main-nav a{
       text-decoration:none;
-      color:#24303f;
-      font-size:14px;
+      color:var(--texto-fuerte);
+      font-size:15px;
       font-weight:800;
-      letter-spacing:.3px;
-      padding:10px 0;
-      transition:.2s ease;
+      letter-spacing:.45px;
+      padding:8px 0;
+      transition:.25s ease;
       position:relative;
       white-space:nowrap;
     }
@@ -195,10 +161,9 @@
       content:"";
       position:absolute;
       left:0;
-      bottom:4px;
+      bottom:2px;
       width:0;
       height:3px;
-      border-radius:999px;
       background:linear-gradient(135deg, var(--azul), var(--azul-oscuro));
       transition:width .22s ease;
     }
@@ -211,536 +176,686 @@
       width:100%;
     }
 
-    .hero{
-      margin-top:22px;
-      background:linear-gradient(135deg, #557396, #2f78bd);
-      color:#fff;
-      border-radius:30px;
-      padding:34px 24px;
-      text-align:center;
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
+    .mobile-overlay{
+      display:none;
     }
 
-    .hero::before{
-      content:"";
-      position:absolute;
-      top:-70px;
-      left:-70px;
-      width:200px;
-      height:200px;
-      border-radius:50%;
-      background:rgba(255,255,255,.06);
+    .mobile-drawer{
+      display:none;
     }
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:auto -60px -60px auto;
-      width:180px;
-      height:180px;
-      background:rgba(255,255,255,.08);
-      border-radius:50%;
-      filter:blur(2px);
+    .mobile-close{
+      display:none;
     }
 
-    .hero h2{
-      font-size:42px;
-      margin-bottom:10px;
-      position:relative;
-      z-index:1;
-      line-height:1.05;
-      letter-spacing:-.6px;
-    }
-
-    .hero p{
-      max-width:760px;
-      margin:0 auto;
-      line-height:1.6;
-      color:rgba(255,255,255,.92);
-      font-size:16px;
-      position:relative;
-      z-index:1;
-    }
-
-    .contact-grid{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:22px;
-    }
-
-    .contact-card{
-      background:var(--card);
-      border-radius:24px;
-      padding:24px;
-      box-shadow:var(--shadow-soft);
-      border:1px solid rgba(0,0,0,.03);
-    }
-
-    .contact-card h3{
-      font-size:28px;
-      margin-bottom:14px;
-      color:#1c2735;
-      line-height:1.1;
-      letter-spacing:-.4px;
-    }
-
-    .contact-card p{
-      color:#4f4f4f;
-      line-height:1.7;
-      font-size:15px;
-      margin-bottom:12px;
-    }
-
-    .contact-highlight{
-      display:grid;
-      gap:12px;
-      margin-top:14px;
-    }
-
-    .highlight-box{
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(0,0,0,.05);
-      border-radius:16px;
-      padding:14px 16px;
-    }
-
-    .highlight-box strong{
-      display:block;
-      margin-bottom:5px;
-      color:#1f1f1f;
-      font-size:15px;
-    }
-
-    .highlight-box span{
-      color:#5b5b5b;
-      line-height:1.6;
-      font-size:14px;
-    }
-
-    .whatsapp-btn{
-      display:inline-flex;
+    .mobile-drawer-logo-link{
+      display:flex;
       align-items:center;
       justify-content:center;
       text-decoration:none;
-      background:#25D366;
+    }
+
+    .faq-hero{
+      margin-top:0;
+      min-height:330px;
+      background:
+        linear-gradient(90deg, rgba(16,24,38,.62) 0%, rgba(16,24,38,.38) 40%, rgba(16,24,38,.22) 100%),
+        linear-gradient(180deg, rgba(16,24,38,.18) 0%, rgba(16,24,38,.42) 100%),
+        url("imagenes/banner-imagen-contacto.jpg") center/cover no-repeat;
       color:#fff;
-      padding:14px 20px;
-      border-radius:14px;
+      width:100vw;
+      margin-left:calc(50% - 50vw);
+      margin-right:calc(50% - 50vw);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .faq-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.10), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,.08), transparent 24%);
+      pointer-events:none;
+    }
+
+    .faq-hero-inner{
+      max-width:980px;
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+      padding:44px 20px;
+    }
+
+    .faq-pill{
+      display:inline-block;
+      padding:9px 15px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.16);
+      font-size:13px;
       font-weight:800;
-      margin-top:10px;
-      font-size:14px;
-      transition:.2s ease;
-      box-shadow:0 8px 16px rgba(37,211,102,.18);
+      margin-bottom:18px;
+      text-transform:uppercase;
+      letter-spacing:.7px;
     }
 
-    .whatsapp-btn:hover{
-      background:#1eb95a;
-      transform:translateY(-1px);
+    .faq-hero h1{
+      font-size:54px;
+      line-height:1;
+      margin-bottom:12px;
+      letter-spacing:-1.4px;
+      text-shadow:0 10px 24px rgba(0,0,0,.20);
     }
 
-    .info-list{
+    .faq-hero p{
+      font-size:18px;
+      line-height:1.65;
+      max-width:780px;
+      margin:0 auto;
+      color:rgba(255,255,255,.94);
+      text-shadow:0 4px 14px rgba(0,0,0,.14);
+    }
+
+    .section-shell{
+      background:rgba(255,255,255,.84);
+      box-shadow:var(--shadow-soft);
+      border:1px solid rgba(36,79,130,.08);
+      backdrop-filter: blur(8px);
+      position:relative;
+      overflow:hidden;
+      border-radius:0;
+      width:100vw;
+      margin-left:calc(50% - 50vw);
+      margin-right:calc(50% - 50vw);
+      padding:34px 42px 40px;
+    }
+
+    .section-shell::before{
+      content:"";
+      position:absolute;
+      top:-60px;
+      right:-60px;
+      width:180px;
+      height:180px;
+      background:radial-gradient(circle, rgba(47,120,189,.10), transparent 68%);
+      pointer-events:none;
+    }
+
+    .faq-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      position:relative;
+      z-index:1;
+    }
+
+    .faq-card{
+      background:rgba(255,255,255,.97);
+      border:1px solid rgba(36,79,130,.08);
+      box-shadow:var(--shadow-card);
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .faq-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 32px rgba(24,39,75,.10);
+    }
+
+    .faq-card-body{
+      padding:22px;
       display:grid;
       gap:12px;
-      margin-top:10px;
     }
 
-    .info-item{
-      padding:14px 16px;
-      border-radius:16px;
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(0,0,0,.05);
+    .faq-label{
+      display:inline-flex;
+      width:max-content;
+      padding:7px 12px;
+      background:rgba(47,120,189,.10);
+      border:1px solid rgba(47,120,189,.12);
+      color:var(--azul-oscuro);
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.5px;
     }
 
-    .info-item strong{
-      display:block;
-      margin-bottom:4px;
-      color:#1f1f1f;
+    .faq-question{
+      font-size:22px;
+      font-weight:800;
+      color:#1f3145;
+      line-height:1.2;
+      letter-spacing:-.3px;
+    }
+
+    .faq-answer{
+      color:var(--muted-2);
       font-size:15px;
+      line-height:1.75;
     }
 
-    .info-item span{
-      color:#5b5b5b;
-      line-height:1.6;
-      font-size:14px;
+    .faq-cta-wrap{
+      position:relative;
+      z-index:1;
+      margin-top:28px;
+      display:grid;
+      gap:14px;
     }
 
-    .mini-note{
-      margin-top:22px;
-      background:rgba(255,255,255,.92);
-      border-radius:24px;
-      padding:22px;
-      box-shadow:var(--shadow-soft);
-      border:1px solid rgba(0,0,0,.03);
+    .faq-cta-title{
+      font-size:30px;
+      color:#1d2d40;
+      font-weight:900;
+      line-height:1.05;
       text-align:center;
+      letter-spacing:-.6px;
     }
 
-    .mini-note h3{
-      font-size:26px;
-      margin-bottom:10px;
-      line-height:1.1;
-      letter-spacing:-.4px;
-    }
-
-    .mini-note p{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.6;
+    .faq-cta-text{
+      color:var(--muted-2);
+      font-size:15px;
+      line-height:1.7;
+      text-align:center;
       max-width:760px;
       margin:0 auto;
     }
 
-    footer{
-      margin-top:30px;
-      background:rgba(255,255,255,.92);
-      border-radius:22px;
-      padding:22px;
-      text-align:center;
-      color:var(--muted);
-      box-shadow:var(--shadow-soft);
-      border:1px solid rgba(0,0,0,.03);
-      font-size:13px;
-      line-height:1.5;
+    .faq-cta-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      text-decoration:none;
+      border:none;
+      background:
+        linear-gradient(135deg, #1f7a5a 0%, #166247 45%, #244f82 100%);
+      color:#fff;
+      padding:18px 22px;
+      font-size:18px;
+      font-weight:900;
+      box-shadow:
+        0 14px 28px rgba(31,122,90,.20),
+        0 8px 18px rgba(36,79,130,.10);
+      transition:transform .22s ease, box-shadow .22s ease;
+      letter-spacing:.2px;
     }
 
-    @media (max-width:900px){
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
+    .faq-cta-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:
+        0 18px 34px rgba(31,122,90,.24),
+        0 10px 22px rgba(36,79,130,.14);
+    }
 
-      .hero h2{
-        font-size:34px;
+    footer{
+      margin-top:0;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(36,79,130,.08);
+      font-size:13px;
+      line-height:1.5;
+      backdrop-filter: blur(8px);
+      text-align:center;
+      color:var(--muted);
+      padding:22px;
+      border-radius:0;
+      width:100vw;
+      margin-left:calc(50% - 50vw);
+      margin-right:calc(50% - 50vw);
+    }
+
+    .whatsapp-float{
+      position:fixed;
+      left:16px;
+      bottom:16px;
+      z-index:999;
+      width:64px;
+      height:64px;
+      border:none;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#4bdc65;
+      box-shadow:
+        0 10px 24px rgba(75,220,101,.28),
+        0 6px 16px rgba(0,0,0,.10);
+      text-decoration:none;
+      transition:transform .22s ease, box-shadow .22s ease;
+      padding:0;
+    }
+
+    .whatsapp-float:hover{
+      transform:translateY(-2px) scale(1.03);
+      box-shadow:
+        0 14px 30px rgba(75,220,101,.34),
+        0 8px 18px rgba(0,0,0,.14);
+    }
+
+    .whatsapp-icon{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      margin:0;
+      line-height:0;
+    }
+
+    .whatsapp-icon svg{
+      width:32px;
+      height:32px;
+      display:block;
+      fill:#fff;
+    }
+
+    @media (max-width:1199px){
+      .faq-hero h1{
+        font-size:46px;
       }
     }
 
     @media (max-width:991px){
-      .container{
-        padding:0 16px 28px;
-      }
-
       .navbar{
-        gap:10px;
-        padding:12px;
-      }
-
-      .nav-top{
-        align-items:center;
-        justify-content:center;
-      }
-
-      .logo-box{
-        width:200px;
-        height:200px;
-      }
-
-      .nav-bottom{
+        min-height:auto;
         flex-direction:column;
-        align-items:flex-start;
-        gap:14px;
-      }
-
-      .main-nav{
-        width:100%;
-        justify-content:flex-start;
-        gap:22px;
-      }
-
-      .hero h2{
-        font-size:36px;
-      }
-    }
-
-    @media (max-width:640px){
-      .top-strip{
-        min-height:42px;
-        padding:0 12px;
-      }
-
-      .top-strip-slider{
-        height:42px;
-      }
-
-      .top-strip-message{
-        font-size:11px;
-        line-height:1.35;
-        padding:0 8px;
-      }
-
-      .navbar{
-        gap:8px;
-        padding:10px 14px 12px;
-      }
-
-      .nav-top{
-        position:relative;
-        display:flex;
-        justify-content:center;
         align-items:center;
-        min-height:90px;
-        padding:0;
+        justify-content:center;
+        gap:8px;
+        padding:12px 16px;
       }
 
       .nav-left{
         width:100%;
-        display:flex;
         justify-content:center;
-        align-items:center;
-      }
-
-      .brand{
-        display:none;
       }
 
       .logo-box{
-        width:180px;
-        height:180px;
-        margin:0 auto;
+        width:135px;
+        height:135px;
       }
 
-      .logo-box img{
+      .nav-bottom{
         width:100%;
-        height:100%;
-        object-fit:contain;
+        justify-content:center;
+      }
+
+      .main-nav{
+        width:100%;
+        justify-content:center;
+        gap:22px;
+      }
+
+      .faq-hero{
+        width:100%;
+        margin-left:0;
+        margin-right:0;
+        min-height:280px;
+      }
+
+      .faq-hero h1{
+        font-size:40px;
+      }
+
+      .section-shell{
+        width:100%;
+        margin-left:0;
+        margin-right:0;
+        padding:24px;
+      }
+
+      .faq-grid{
+        grid-template-columns:1fr;
+      }
+
+      footer{
+        width:100%;
+        margin-left:0;
+        margin-right:0;
+      }
+    }
+
+    @media (max-width:640px){
+      .container{
+        padding:0 0 26px;
+      }
+
+      header{
+        overflow:visible;
+      }
+
+      .navbar{
+        min-height:128px;
+        padding:12px 18px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
+      }
+
+      .nav-left{
+        width:100%;
+        min-height:104px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
+      }
+
+      .logo-box{
+        width:138px;
+        height:138px;
+        margin:0 auto;
       }
 
       .menu-btn{
         display:flex;
         position:absolute;
-        left:0;
+        left:4px;
         top:50%;
         transform:translateY(-50%);
-        width:42px;
-        height:42px;
+        width:48px;
+        height:48px;
         border:none;
-        border-radius:14px;
         background:transparent;
-        font-size:34px;
+        font-size:36px;
+        line-height:1;
         cursor:pointer;
         align-items:center;
         justify-content:center;
-        z-index:3;
-        color:#222;
+        z-index:60;
+        color:#1f1f1f;
         padding:0;
       }
 
       .nav-bottom{
-        display:flex;
-        flex-direction:column;
-        gap:12px;
+        display:none;
       }
 
-      .main-nav{
-        display:none;
+      .mobile-overlay{
+        display:block;
+        position:fixed;
+        inset:0;
+        background:rgba(14,20,30,.42);
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        transition:opacity .28s ease, visibility .28s ease;
+        z-index:70;
+      }
+
+      .mobile-drawer{
+        display:flex;
         flex-direction:column;
-        align-items:flex-start;
+        position:fixed;
+        top:0;
+        left:0;
+        width:min(82vw, 320px);
+        height:100dvh;
+        background:rgba(255,255,255,.98);
+        backdrop-filter:blur(10px);
+        box-shadow:18px 0 40px rgba(20,35,60,.18);
+        transform:translateX(-105%);
+        transition:transform .30s ease;
+        z-index:80;
+        padding:22px 18px 24px;
+      }
+
+      .mobile-drawer-head{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:14px;
+        margin-bottom:22px;
+      }
+
+      .mobile-drawer-logo{
+        width:78px;
+        height:78px;
+        object-fit:contain;
+        display:block;
+      }
+
+      .mobile-close{
+        display:flex;
+        width:42px;
+        height:42px;
+        border:none;
+        background:#f3f4f6;
+        color:#1f1f1f;
+        font-size:26px;
+        cursor:pointer;
+        align-items:center;
+        justify-content:center;
+      }
+
+      .mobile-drawer-nav{
+        display:flex;
+        flex-direction:column;
         gap:6px;
-        background:#fff;
-        border:1px solid var(--line);
-        border-radius:16px;
-        padding:12px 14px;
-        box-shadow:var(--shadow-soft);
       }
 
-      .main-nav a{
-        width:100%;
-        font-size:14px;
-        padding:8px 0;
+      .mobile-drawer-nav a{
+        text-decoration:none;
+        color:var(--texto-fuerte);
+        font-size:18px;
+        font-weight:800;
+        letter-spacing:.4px;
+        padding:14px 12px;
+        transition:.2s ease;
       }
 
-      .main-nav a::after{
-        display:none;
+      .mobile-drawer-nav a:hover,
+      .mobile-drawer-nav a:active{
+        background:rgba(47,120,189,.08);
+        color:var(--azul-oscuro);
       }
 
-      .menu-toggle:checked ~ .nav-bottom .main-nav{
-        display:flex;
+      .menu-toggle:checked ~ .mobile-overlay{
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
       }
 
-      .hero{
-        margin-top:14px;
-        padding:24px 18px;
-        border-radius:22px;
+      .menu-toggle:checked ~ .mobile-drawer{
+        transform:translateX(0);
       }
 
-      .hero h2{
-        font-size:30px;
-        line-height:1.05;
-        margin-bottom:8px;
+      .faq-hero{
+        min-height:230px;
+        background-position:center;
       }
 
-      .hero p{
+      .faq-hero-inner{
+        padding:26px 16px;
+      }
+
+      .faq-pill{
+        font-size:11px;
+        padding:7px 12px;
+        margin-bottom:14px;
+      }
+
+      .faq-hero h1{
+        font-size:32px;
+        line-height:1;
+      }
+
+      .faq-hero p{
         font-size:14px;
         line-height:1.55;
       }
 
-      .contact-grid{
-        margin-top:18px;
-        gap:14px;
+      .section-shell{
+        padding:20px 14px 24px;
+        border-left:none;
+        border-right:none;
       }
 
-      .contact-card{
+      .faq-card-body{
         padding:18px;
-        border-radius:20px;
       }
 
-      .contact-card h3{
+      .faq-question{
+        font-size:19px;
+      }
+
+      .faq-answer{
+        font-size:14px;
+      }
+
+      .faq-cta-title{
         font-size:24px;
-        margin-bottom:12px;
       }
 
-      .contact-card p{
-        font-size:14px;
-        line-height:1.6;
-      }
-
-      .highlight-box,
-      .info-item{
-        padding:13px 14px;
-        border-radius:14px;
-      }
-
-      .highlight-box strong,
-      .info-item strong{
+      .faq-cta-text{
         font-size:14px;
       }
 
-      .highlight-box span,
-      .info-item span{
-        font-size:13px;
+      .faq-cta-btn{
+        font-size:16px;
+        padding:16px 14px;
       }
 
-      .whatsapp-btn{
-        width:100%;
-        padding:13px 16px;
+      .whatsapp-float{
+        left:14px;
+        bottom:14px;
+        width:58px;
+        height:58px;
       }
 
-      .mini-note{
-        margin-top:18px;
-        padding:18px;
-        border-radius:18px;
-      }
-
-      .mini-note h3{
-        font-size:22px;
-      }
-
-      .mini-note p{
-        font-size:13px;
+      .whatsapp-icon svg{
+        width:29px;
+        height:29px;
       }
 
       footer{
         padding:18px;
-        border-radius:18px;
         font-size:12px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="top-strip">
-    <div class="top-strip-slider" id="topStripSlider">
-      <span class="top-strip-message active">Todos los pines traen bolsita de empaque</span>
-      <span class="top-strip-message">Promociones a partir de la compra de 2 pines o más</span>
-      <span class="top-strip-message">Pídenos por WhatsApp y arma tu surtido</span>
-      <span class="top-strip-message">Compras a partir de 3 unidades</span>
-    </div>
-  </div>
-
   <header>
     <div class="navbar">
-      <div class="nav-top">
-        <label for="menu-toggle" class="menu-btn">☰</label>
+      <div class="nav-left">
+        <label for="menu-toggle" class="menu-btn" aria-label="Abrir menú">☰</label>
 
-        <div class="nav-left">
-          <div class="logo-box">
-            <img src="imagenes/logo.png" alt="Logo Pin Lab Co." onerror="this.style.display='none'; this.parentElement.innerHTML='Logo';">
-          </div>
+        <a href="index.html" class="logo-box">
+          <img src="imagenes/logo.png" alt="Logo Pin Lab Co." onerror="this.style.display='none'; this.parentElement.innerHTML='Logo';">
+        </a>
+
+        <div class="nav-bottom">
+          <nav class="main-nav">
+            <a href="index.html">INICIO</a>
+            <a href="catalogo.html">CATÁLOGO</a>
+            <a href="preguntas.html">PREGUNTAS FRECUENTES</a>
+            <a href="contacto.html">CONTACTO</a>
+          </nav>
         </div>
-      </div>
-
-      <input type="checkbox" id="menu-toggle" class="menu-toggle">
-
-      <div class="nav-bottom">
-        <nav class="main-nav">
-          <a href="index.html">INICIO</a>
-          <a href="catalogo.html">CATÁLOGO</a>
-          <a href="preguntas.html">PREGUNTAS FRECUENTES</a>
-          <a href="contacto.html">CONTACTO</a>
-        </nav>
       </div>
     </div>
   </header>
 
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+  <label for="menu-toggle" class="mobile-overlay" aria-label="Cerrar menú"></label>
+
+  <aside class="mobile-drawer" aria-label="Menú móvil">
+    <div class="mobile-drawer-head">
+      <a href="index.html" class="mobile-drawer-logo-link">
+        <img src="imagenes/logo.png" alt="Logo Pin Lab Co." class="mobile-drawer-logo">
+      </a>
+
+      <label for="menu-toggle" class="mobile-close" aria-label="Cerrar menú">✕</label>
+    </div>
+
+    <nav class="mobile-drawer-nav">
+      <a href="index.html">INICIO</a>
+      <a href="catalogo.html">CATÁLOGO</a>
+      <a href="preguntas.html">PREGUNTAS FRECUENTES</a>
+      <a href="contacto.html">CONTACTO</a>
+    </nav>
+  </aside>
+
   <div class="container">
-    <section class="hero">
-      <h2>Contacto</h2>
-      <p>Haz tu pedido, consulta disponibilidad o pregúntanos por varias referencias al mismo tiempo. Te respondemos directo por WhatsApp.</p>
+    <section class="faq-hero">
+      <div class="faq-hero-inner">
+        <span class="faq-pill">Resuelve tus dudas</span>
+        <h1>Preguntas frecuentes</h1>
+        <p>Todo lo que necesitas saber antes de hacer tu pedido para que comprar tus pines sea más fácil, claro y cómodo.</p>
+      </div>
     </section>
 
-    <section class="contact-grid">
-      <div class="contact-card">
-        <h3>Escríbenos</h3>
-        <p>Si ya viste pines que te gustaron en el catálogo, envíanos un mensaje con las referencias y te ayudamos con el pedido.</p>
-        <p>Puedes preguntarnos por disponibilidad, cantidad mínima, entrega y recomendaciones según el estilo que buscas.</p>
-
-        <div class="contact-highlight">
-          <div class="highlight-box">
-            <strong>Pedido fácil</strong>
-            <span>Solo envíanos las referencias de los pines que te gusten y te ayudamos a organizar todo.</span>
+    <section class="section-shell">
+      <div class="faq-grid">
+        <article class="faq-card">
+          <div class="faq-card-body">
+            <span class="faq-label">Sobre los pines</span>
+            <h3 class="faq-question">¿Los pines incluyen empaque?</h3>
+            <p class="faq-answer">Sí, cada pin incluye su bolsita de empaque para que llegue protegido y listo para usar o regalar. Es un detalle simple, pero hace que todo se vea mucho más bonito.</p>
           </div>
+        </article>
 
-          <div class="highlight-box">
-            <strong>Atención directa</strong>
-            <span>La respuesta es personalizada para resolver dudas y confirmar tu compra rápidamente.</span>
+        <article class="faq-card">
+          <div class="faq-card-body">
+            <span class="faq-label">Sobre los pines</span>
+            <h3 class="faq-question">¿De qué material son?</h3>
+            <p class="faq-answer">Son pines metálicos, lo que les da mayor calidad, durabilidad y un acabado mucho más bonito.</p>
           </div>
+        </article>
 
-          <div class="highlight-box">
-            <strong>Compra con confianza</strong>
-            <span>Tus pines llegan listos para entregar o regalar, con una presentación cuidada y bonita.</span>
+        <article class="faq-card">
+          <div class="faq-card-body">
+            <span class="faq-label">Sobre los pines</span>
+            <h3 class="faq-question">¿Puedo mezclar diseños?</h3>
+            <p class="faq-answer">Sí, puedes elegir diferentes referencias en un mismo pedido sin problema.</p>
           </div>
-        </div>
+        </article>
 
-        <a class="whatsapp-btn" href="https://wa.me/573116821619?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20Pin%20Lab%20Co." target="_blank">
-          Ir a WhatsApp
+        <article class="faq-card">
+          <div class="faq-card-body">
+            <span class="faq-label">Sobre pedidos</span>
+            <h3 class="faq-question">¿Cómo hago mi pedido?</h3>
+            <p class="faq-answer">Solo escríbenos por WhatsApp con los pines que quieres y te ayudamos con todo el proceso.</p>
+          </div>
+        </article>
+
+        <article class="faq-card">
+          <div class="faq-card-body">
+            <span class="faq-label">Sobre pedidos</span>
+            <h3 class="faq-question">¿Hay promociones?</h3>
+            <p class="faq-answer">Sí, manejamos promociones dependiendo de la cantidad que compres.</p>
+          </div>
+        </article>
+
+        <article class="faq-card">
+          <div class="faq-card-body">
+            <span class="faq-label">Sobre pedidos</span>
+            <h3 class="faq-question">¿Puedo preguntar antes de comprar?</h3>
+            <p class="faq-answer">Claro, puedes escribirnos sin compromiso y resolver cualquier duda.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="faq-cta-wrap">
+        <h3 class="faq-cta-title">¿Tienes otra duda?</h3>
+        <p class="faq-cta-text">Si no encontraste aquí la respuesta, escríbenos por WhatsApp y te ayudamos rápido.</p>
+        <a class="faq-cta-btn" href="https://wa.me/573116821619?text=Hola,%20tengo%20una%20duda%20sobre%20los%20pines%20de%20Pin%20Lab%20Co." target="_blank">
+          Escríbenos por WhatsApp
         </a>
       </div>
-
-      <div class="contact-card">
-        <h3>Información útil</h3>
-
-        <div class="info-list">
-          <div class="info-item">
-            <strong>WhatsApp</strong>
-            <span>+57 311 682 1619</span>
-          </div>
-
-          <div class="info-item">
-            <strong>Pedidos</strong>
-            <span>Compras a partir de 3 unidades. Pueden ser surtidas.</span>
-          </div>
-
-          <div class="info-item">
-            <strong>Empaque</strong>
-            <span>Cada pin incluye su bolsita de empaque para una presentación más bonita y cuidada.</span>
-          </div>
-
-          <div class="info-item">
-            <strong>Entregas</strong>
-            <span>Consulta por condiciones especiales de entrega y opciones disponibles según tu pedido.</span>
-          </div>
-
-          <div class="info-item">
-            <strong>Atención</strong>
-            <span>Respuesta rápida para ayudarte con disponibilidad, referencias y proceso de compra.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mini-note">
-      <h3>¿Ya elegiste tus favoritos?</h3>
-      <p>Ve al catálogo, anota las referencias que más te gusten y escríbenos por WhatsApp para ayudarte con tu pedido de forma rápida, clara y segura.</p>
     </section>
 
     <footer>
@@ -748,19 +863,17 @@
     </footer>
   </div>
 
-  <script>
-    const topStripMessages = document.querySelectorAll('.top-strip-message');
-    let topStripIndex = 0;
-
-    function rotateTopStripMessages() {
-      if (!topStripMessages.length) return;
-
-      topStripMessages[topStripIndex].classList.remove('active');
-      topStripIndex = (topStripIndex + 1) % topStripMessages.length;
-      topStripMessages[topStripIndex].classList.add('active');
-    }
-
-    setInterval(rotateTopStripMessages, 3000);
-  </script>
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/573116821619?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20pines%20de%20Pin%20Lab%20Co."
+    target="_blank"
+    aria-label="WhatsApp"
+  >
+    <span class="whatsapp-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#ffffff" d="M20.52 3.48A11.8 11.8 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.15 1.59 5.95L0 24l6.31-1.65a11.9 11.9 0 0 0 5.76 1.47h.01c6.57 0 11.92-5.35 11.92-11.92 0-3.18-1.24-6.17-3.48-8.42Zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.05-1.39l-.36-.21-3.74.98 1-3.65-.23-.37a9.86 9.86 0 0 1-1.52-5.24c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.9 6.99c0 5.46-4.44 9.89-9.88 9.89Zm5.43-7.42c-.3-.15-1.77-.87-2.04-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.5.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.66-.51h-.57c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.26.49 1.69.63.71.23 1.36.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.08-.13-.27-.2-.57-.35Z"/>
+      </svg>
+    </span>
+  </a>
 </body>
 </html>
